@@ -1,0 +1,58 @@
+__include__:
+    - bfaw-objects-cl.datasets
+
+
+# A dictionary of experiment name to a triple of
+#   - dataset name
+#   - number of smcs to learn
+#   - a list of experiment names that precede it
+
+curriculum:
+
+
+    cl_self-touches-object_vs_not-touches-on-floor:
+      - cl_self-touches-object_vs_not-touches-on-floor
+      - []
+
+    cl_self-between-two-objects_vs_not-between-on-floor:
+      - cl_self-between-two-objects_vs_not-between-on-floor
+      - []
+
+    cl_object-on-floor_vs_not-on-floor:
+      - cl_object-on-floor_vs_not-on-floor
+      - [] 
+
+    cl_object-on-floor_vs_no-object:
+      - cl_object-on-floor_vs_no-object
+      - []
+
+    cl_object-on-floor_vs_not:
+      - cl_object-on-floor_vs_not
+      - []
+
+    cl_adjacent-object-on-floor_vs_not:
+      - cl_adjacent-object-on-floor_vs_not
+      - []
+
+    cl_two-objects-on-floor_vs_one:
+      - cl_two-objects-on-floor_vs_one
+      - []
+
+    cl_two-objects-on-floor_vs_two-objects-one-on-floor:  
+      - cl_two-objects-on-floor_vs_two-objects-one-on-floor
+      - []
+
+    cl_two-objects-on-floor_vs_not:
+      - cl_two-objects-on-floor_vs_not
+      - []
+
+    cl_object-above-floor_vs_no-object:
+      - cl_object-above-floor_vs_no-object
+      - []
+
+    cl_two-objects-one-above-and-one-on-floor_vs_not:
+      - cl_two-objects-one-above-and-one-on-floor_vs_not
+      - []    
+    
+
+

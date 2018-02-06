@@ -1,0 +1,137 @@
+__include__:
+    - bfaw-objects-ba.datasets
+
+
+# A dictionary of experiment name to a triple of
+#   - dataset name
+#   - a list of experiment names that precede it
+
+curriculum:
+
+# *********** (level 1) **********************************#
+
+
+    ba_self-touches-object_from_anywhere-on-floor:
+      - ba_self-touches-object_from_anywhere-on-floor
+      - []
+
+    ba_self-touches-object_from_anywhere-on-floor_with_distraction:
+      - ba_self-touches-object_from_anywhere-on-floor_with_distraction
+      - []
+
+
+
+
+
+
+    ba_self-left-touches-object_from_anywhere-on-floor:
+      - ba_self-left-touches-object_from_anywhere-on-floor
+      - []
+
+    ba_self-left-touches-object_from_right-touches-on-floor:
+      - ba_self-left-touches-object_from_right-touches-on-floor
+      - []
+
+    ba_self-left-touches-object_from_ontop:
+      - ba_self-left-touches-object_from_ontop
+      - []
+
+
+
+    ba_self-right-touches-object_from_anywhere-on-floor:
+      - ba_self-right-touches-object_from_anywhere-on-floor
+      - []
+
+    ba_self-right-touches-object_from_left-touches-on-floor:
+      - ba_self-right-touches-object_from_left-touches-on-floor
+      - []
+    
+    ba_self-right-touches-object_from_ontop:
+      - ba_self-right-touches-object_from_ontop
+      - []
+
+
+
+    ba_self-ontop-object_from_anywhere-on-floor:
+      - ba_self-ontop-object_from_anywhere-on-floor
+      - []
+
+    ba_self-ontop-object_from_anwhere-on-floor_with_distraction:
+      - ba_self-ontop-object_from_anywhere-on-floor_with_distraction
+      - []
+    
+    ba_self-ontop-object_from_left-touches-on-floor:
+      - ba_self-ontop-object_from_left-touches-on-floor
+      - []
+
+    ba_self-ontop-object_from_left-touches-on-floor_with_distraction:
+      - ba_self-ontop-object_from_left-touches-on-floor_with_distraction
+      - []
+
+    ba_self-ontop-object_from_right-touches-on-floor:
+      - ba_self-ontop-object_from_right-touches-on-floor
+      - []
+    
+    ba_self-ontop-object_from_right-touches-on-floor_with_distraction:
+      - ba_self-ontop-object_from_right-touches-on-floor_with_distraction
+      - []
+
+
+
+    ba_self-between-two-objects_from_not-between-on-floor:
+      - ba_self-between-two-objects_from_not-between-on-floor
+      - []
+
+    ba_self-between-two-objects_from_left-touches-on-floor:
+      - ba_self-between-two-objects_from_left-touches-on-floor
+      - []
+    
+    ba_self-between-two-objects_from_right-touches-on-floor:
+      - ba_self-between-two-objects_from_right-touches-on-floor
+      - []
+
+    ba_self-between-two-objects_from_left-on-floor:
+      - ba_self-between-two-objects_from_left-on-floor
+      - []
+    
+    ba_self-between-two-objects_from_right-on-floor:
+      - ba_self-between-two-objects_from_right-on-floor
+      - []
+
+
+
+    ba_self-away-left-of-object_from_touches-on-floor:
+      - ba_self-away-left-of-object_from_touches-on-floor
+      - []
+    
+    ba_self-away-right-of-object_from_touches-on-floor:
+      - ba_self-away-right-of-object_from_touches-on-floor
+      - []
+
+    ba_self-away-left-of-object_from_left-touches-on-floor:
+      - ba_self-away-left-of-object_from_left-touches-on-floor
+      - []
+
+    ba_self-away-right-of-object_from_right-touches-on-floor:
+      - ba_self-away-right-of-object_from_right-touches-on-floor
+      - []  
+
+
+
+    ba_self-left-of-two-objects_from_not-left-on-floor:
+      - ba_self-left-of-two-objects_from_not-left-on-floor
+      - []
+    
+    ba_self-right-of-two-objects_from_not-right-on-floor:
+      - ba_self-right-of-two-objects_from_not-right-on-floor
+      - []
+
+    ba_self-second_from_left_from_anywhere-on-floor:
+      - ba_self-second_from_left_from_anywhere-on-floor
+      - []
+    
+    ba_self-second_from_right_from_anywhere-on-floor:
+      - ba_self-second_from_right_from_anywhere-on-floor
+      - []
+
+

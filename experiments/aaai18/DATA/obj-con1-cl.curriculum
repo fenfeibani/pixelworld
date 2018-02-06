@@ -1,0 +1,93 @@
+__include__:
+    - bfaw-obj-containment-cl.datasets
+
+
+# A dictionary of experiment name to a triple of
+#   - dataset name
+#   - a list of experiment names that precede it
+
+curriculum:
+            
+    # Individual containers and other objects
+    # --------------------------------------------------------------------------
+
+    # -- directional --
+
+    ### left
+      cl_self-left-touches-container_vs_object:
+          - cl_self-left-touches-container_vs_object
+          - []
+
+      cl_self-left-touches-container_vs_non-container:
+          - cl_self-left-touches-container_vs_non-container
+          - []
+
+      cl_self-left-of-container_vs_object:
+          - cl_self-left-of-container_vs_object
+          - []
+
+      cl_self-left-of-container_vs_non-container:
+          - cl_self-left-of-container_vs_non-container
+          - []
+
+
+    ### right
+      cl_self-right-touches-container_vs_object:
+          - cl_self-right-touches-container_vs_object
+          - []
+
+      cl_self-right-touches-container_vs_non-container:
+          - cl_self-right-touches-container_vs_non-container
+          - []
+
+      cl_self-right-of-container_vs_object:
+          - cl_self-right-of-container_vs_object
+          - []
+
+      cl_self-right-of-container_vs_non-container:
+          - cl_self-right-of-container_vs_non-container
+          - []
+
+
+    # -- inside --
+
+      cl_self-inside-container_vs_rest:
+          - cl_self-inside-container_vs_rest
+          - []
+
+      cl_self-inside-enclosure_vs_rest:
+          - cl_self-inside-enclosure_vs_rest
+          - []
+
+      cl_self-inside-left-container_vs_rest:
+          - cl_self-inside-left-container_vs_rest
+          - []
+
+      cl_self-inside-right-container_vs_rest:
+          - cl_self-inside-right-container_vs_rest
+          - []
+
+
+
+    # Multiple containers and other objects
+    # --------------------------------------------------------------------------
+
+    # -- directional --
+
+    ### left
+      cl_self-left-of-two-objects-vs-one:
+          - cl_self-left-of-two-objects-vs-one
+          - []
+
+      cl_self-left-of-one-container-of-two-objects_vs_none:
+          - cl_self-left-of-one-container-of-two-objects_vs_none
+          - []
+
+    ### right
+      cl_self-right-of-two-objects-vs-one:
+          - cl_self-right-of-two-objects-vs-one
+          - []
+
+      cl_self-right-of-one-container-of-two-objects_vs_none:
+          - cl_self-right-of-one-container-of-two-objects_vs_none
+          - []

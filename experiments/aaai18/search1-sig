@@ -1,0 +1,7 @@
+mode: meta
+
+__include__:
+    - COMMON/common.exp
+    - COMMON/bringabout-sig.exp
+    - DATA/search1.curriculum
+#    - COMMON/test.exp     # uncomment for test mode    

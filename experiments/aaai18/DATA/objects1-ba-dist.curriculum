@@ -1,0 +1,221 @@
+__include__:
+    - bfaw-objects-ba.datasets
+
+
+# A dictionary of experiment name to a triple of
+#   - dataset name
+#   - a list of experiment names that precede it
+
+curriculum:
+
+# *********** (level 1) **********************************#
+
+# -- self touches anywhere --
+
+# tricky - cf. from_other_object
+
+    ba_self-touches-object_from_anywhere-on-floor:
+      - ba_self-touches-object_from_anywhere-on-floor
+      - []
+
+    ba_self-touches-object_from_anywhere-on-floor_with_distraction:
+      - ba_self-touches-object_from_anywhere-on-floor_with_distraction
+      - []
+
+
+
+# -- self left-touches --
+
+# tricky - cf. from_other_object
+
+    ba_self-left-touches-object_from_anywhere-on-floor:
+      - ba_self-left-touches-object_from_anywhere-on-floor
+      - []
+
+    ba_self-left-touches-object_from_anywhere-on-floor_with_distraction:
+      - ba_self-left-touches-object_from_anywhere-on-floor_with_distraction
+      - []
+
+
+    ba_self-left-touches-object_from_left-on-floor:
+      - ba_self-left-touches-object_from_left-on-floor 
+      - []
+
+    ba_self-left-touches-object_from_left-on-floor_with_distraction:
+      - ba_self-left-touches-object_from_left-on-floor_with_distraction
+      - []
+
+
+    ba_self-left-touches-object_from_right-touches-on-floor:
+      - ba_self-left-touches-object_from_right-touches-on-floor
+      - []
+
+    ba_self-left-touches-object_from_right-touches-on-floor_with_distraction:
+      - ba_self-left-touches-object_from_right-touches-on-floor_with_distraction
+      - []
+
+
+    ba_self-left-touches-object_from_ontop:
+      - ba_self-left-touches-object_from_ontop
+      - []
+
+    ba_self-left-touches-object_from_ontop_with_distraction:
+      - ba_self-left-touches-object_from_ontop_with_distraction
+      - []
+
+
+
+
+# # -- self right-touches --
+
+# tricky - cf. from_other_object
+
+    ba_self-right-touches-object_from_anywhere-on-floor:
+      - ba_self-right-touches-object_from_anywhere-on-floor
+      - []
+
+    ba_self-right-touches-object_from_anywhere-on-floor_with_distraction:
+      - ba_self-right-touches-object_from_anywhere-on-floor_with_distraction
+      - []
+
+
+    ba_self-right-touches-object_from_right-on-floor:
+      - ba_self-right-touches-object_from_right-on-floor 
+      - []
+
+    ba_self-right-touches-object_from_right-on-floor_with_distraction:
+      - ba_self-right-touches-object_from_right-on-floor_with_distraction
+      - []
+
+
+    ba_self-right-touches-object_from_left-touches-on-floor:
+      - ba_self-right-touches-object_from_left-touches-on-floor
+      - []
+
+    ba_self-right-touches-object_from_left-touches-on-floor_with_distraction:
+      - ba_self-right-touches-object_from_left-touches-on-floor_with_distraction
+      - []
+
+    
+    ba_self-right-touches-object_from_ontop:
+      - ba_self-right-touches-object_from_ontop
+      - []
+
+    ba_self-right-touches-object_from_ontop_with_distraction:
+       - ba_self-right-touches-object_from_ontop_with_distraction
+       - []
+
+
+
+# # -- self moves ontop --
+
+# tricky - cf. from_other_object
+
+    ba_self-ontop-object_from_anywhere-on-floor:
+      - ba_self-ontop-object_from_anywhere-on-floor
+      - []
+
+    ba_self-ontop-object_from_anywhere-on-floor_with_distraction:
+      - ba_self-ontop-object_from_anywhere-on-floor_with_distraction
+      - []
+    
+
+    ba_self-ontop-object_from_left-touches-on-floor:
+      - ba_self-ontop-object_from_left-touches-on-floor
+      - []
+
+    ba_self-ontop-object_from_left-touches-on-floor_with_distraction:
+      - ba_self-ontop-object_from_left-touches-on-floor_with_distraction
+      - []
+
+    ba_self-ontop-object_from_right-touches-on-floor:
+      - ba_self-ontop-object_from_right-touches-on-floor
+      - []
+
+    ba_self-ontop-object_from_right-touches-on-floor_with_distraction:
+      - ba_self-ontop-object_from_right-touches-on-floor_with_distraction
+      - []
+    
+
+
+# # complex
+
+# -- climb over obstacle in order to be left-touching etc.
+
+    ba_self-left-touches-object_from_left-obstacle-on-floor:
+       - ba_self-left-touches-object_from_left-obstacle-on-floor
+       - []
+
+    ba_self-left-touches-object_from_left-obstacle-on-floor_with_distraction:
+      - ba_self-left-touches-object_from_left-obstacle-on-floor_with_distraction
+      - []
+
+    ba_self-right-touches-object_from_right-obstacle-on-floor:
+       - ba_self-right-touches-object_from_right-obstacle-on-floor
+       - []
+
+    ba_self-right-touches-object_from_right-obstacle-on-floor_with_distraction:
+       - ba_self-right-touches-object_from_right-obstacle-on-floor_with_distraction
+       - []
+
+
+# #     ba_self-between-two-objects_from_not-between-on-floor:
+# #       - ba_self-between-two-objects_from_not-between-on-floor
+# #       - []
+
+# #     ba_self-between-two-objects_from_left-touches-on-floor:
+# #       - ba_self-between-two-objects_from_left-touches-on-floor
+# #       - []
+    
+# #     ba_self-between-two-objects_from_right-touches-on-floor:
+# #       - ba_self-between-two-objects_from_right-touches-on-floor
+# #       - []
+
+
+# #     ba_self-between-two-objects_from_left-on-floor:
+# #       - ba_self-between-two-objects_from_left-on-floor
+# #       - []
+    
+# #     ba_self-between-two-objects_from_right-on-floor:
+# #       - ba_self-between-two-objects_from_right-on-floor
+# #       - []
+
+
+
+# #     ba_self-away-left-of-object_from_touches-on-floor:
+# #       - ba_self-away-left-of-object_from_touches-on-floor
+# #       - []
+    
+# #     ba_self-away-right-of-object_from_touches-on-floor:
+# #       - ba_self-away-right-of-object_from_touches-on-floor
+# #       - []
+
+# #     ba_self-left-of-two-objects_from_not-left-on-floor:
+# #       - ba_self-left-of-two-objects_from_not-left-on-floor
+# #       - []
+    
+# #     ba_self-right-of-two-objects_from_not-right-on-floor:
+# #       - ba_self-right-of-two-objects_from_not-right-on-floor
+# #       - []
+
+# #     ba_self-second_from_left_from_anywhere-on-floor:
+# #       - ba_self-second_from_left_from_anywhere-on-floor
+# #       - []
+    
+# #     ba_self-second_from_right_from_anywhere-on-floor:
+# #       - ba_self-second_from_right_from_anywhere-on-floor
+# #       - []
+
+
+
+
+# # specific distractor versions
+
+
+# #       ba_self-right-touches-object_from_right-on-floor_with_distractors-touches-right-floating-between:
+# #       - ba_self-right-touches-object_from_right-on-floor_with_distractors-touches-right-floating-between
+# #       - []
+
+# #     ba_self-left-touches-object_from_left-on-floor_with_distractors-touches-left-floating-between:
+# #      - ba_self-left-touches-object_from_left-on-floor_with_distractors-touches-left-floating-between
+# #      - []

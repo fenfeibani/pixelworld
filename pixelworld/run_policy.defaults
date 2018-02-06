@@ -1,0 +1,302 @@
+# Experiment configuration file format
+# ------------------------------------
+#
+# This file, when passed into run.py along with an index specifying which 
+# instance of the experiment to run, is used by run.py to generate a dictionary 
+# which configures an experiment. This is then passed to the code which performs
+# the experiment; in the case of training a policy, this is 
+# run_policy.py:execute_experiment
+#
+# The method run.py:yield_experiment_cfgs is used to read this file and generate
+# the processed configuration in a series of stages:
+#
+# 1. Reading and parsing YAML (expcfg.py:load_raw_cfg)
+# ---------------------------
+# The file is read and interpreted as a YAML file. This describes a nested
+# structure of dictionaries, lists, and primitive Python types; for more see:
+#   http://docs.ansible.com/ansible/YAMLSyntax.html
+#   http://pyyaml.org/wiki/PyYAML
+#
+# 2. Loop instantiation (expcfg.py:instantiate_loops)
+# ---------------------
+# The loops are instantiated using the index. 
+# A loop is described by any key which begins with "loop", and it describes
+# how to modify the configuration file depending on the index. For example, 
+# a cfg containing:
+#     loop0:
+#         key: setup_np_random_seed
+#         vals:
+#             - 10
+#             - 11
+#             - 12
+#             - 13
+# is for index 0 equivalent to a cfg containing only:
+#     setup_np_random_seed: 10
+# and similarly for indexes 1, 2, and 3. We allow any key beginning with "loop"
+# because keys must be unique: later entries with the same key overwrite earlier
+# ones silently.
+#
+# A loop may also be defined by a key and a range:
+#     loop0:
+#         key: setup_np_random_seed
+#         range:
+#             low: 10
+#             high: 14
+#             step: 1
+# which is equivalent to the previous loop. Values start at low, increase by 
+# step, and stop excluding high. low defaults to 0, step defaults to 1. 
+#
+# A loop may specify the value of multiple keys at once, and the keys may be 
+# nested, for example:
+#     loop1:
+#         keys: [algo.kwargs.max_path_length, policy.kwargs.hidden_sizes]
+#         vals:
+#             - [10, [4]]
+#             - [20, [5]]
+#             - [30, [6]]
+#             - [40, [4]]
+# is for index 0 equivalent to:
+#     algo:
+#         kwargs:
+#             max_path_length: 10
+#     policy:
+#         kwargs:
+#             hidden_sizes: [4]
+#
+# Multiple loops are combined in a product, so that if there are two loops
+# with n and m entries respectively, then there are n*m possible instances.
+# Loops with lexicographically earlier keys change slowest.
+#
+# When training a policy, run_policy.py:cfg_pre_resolution_hook is now run
+# to modify the cfg in various ways, primarily to set the defaults specified
+# later in this file (but see more below).
+#
+# 3. Object creation (expcfg.py:create_objects)
+# ------------------
+# Create objects from the raw values of each top-level key of the configuration.
+#
+# Creating an object processes each raw value in three stages:
+#   a. Resolving any references to other objects, either internal or external.
+#   b. If the *raw* value contains an 'init' key, call the init function, 
+#      optionally passing in 'args' or 'kwargs'.
+#   c. Post-process the object by passing it through post_object_hook.
+#
+# Objects are created after objects they have internal references to. If this 
+# causes a cycle, an exception is raised.
+# 
+# 3a. Reference resolution (expcfg.py:recursively_resolve_refs)
+# ------------------------
+# Python objects can be referred to be references. Any string recursively found
+# inside a list or dictionary which begins with a single + will be interpreted
+# as a reference (strings beginning with ++ will have their first + removed
+# and are not treated as a reference).
+#
+# References are either to internal objects (i.e., keys in this configuration
+# file)
+#     +@name
+# to objects imported from python packages:
+#     +module1.module2:identifier
+# or to pickled object stored in a file (technically loaded with joblib.load):
+#     +dir1/dir2/filename
+# 
+# A reference to a file may contain wildcards (*). If so, all files matching
+# this pattern (as interpreted by glob.glob) will be read, and their 
+# corresponding objects will be returned as a list.
+# 
+# References may be suffixed by a modifier string (see expcfg.py:modify_object)
+#     +ref+modifier
+# The modifier string is a sequence of modifiers. There are three modifiers:
+#     [key]       obj <- obj[key]    if key is an integer
+#                 obj <- obj["key"]  otherwise
+#     .attr       obj <- obj.attr
+#     *           map the subsequent modifier string over the object
+# 
+# The map modifier when applied to a sequence maps over its values, and
+# when applied to a dictionary maps over its values.
+# 
+# For example, the following:
+#     +out/test/modular1/*/0/test_results.pkl+*[correct_class]
+# loads all the test_results.pkl files matching the above pattern, then
+# returns a list containing the "correct_class" key of each file.
+#
+# 3b. Object initialization
+# -------------------------
+# Objects may be constructed by specifying an initializer, typically a class but
+# any callable works, along with arguments and keyword arguments. For example,
+#     algo: 
+#         init: +rllab.algos.trpo:TRPO
+#         kwargs:
+#             batch_size: 1000
+#             whole_paths: True
+#             n_itr: 20
+# instantiates the class rllab.algos.trpo:TRPO with the given keyword arguments.
+# In general
+#      x:
+#          init: +f
+#          kwargs: ...
+#          args: ...
+# results in the key x having the value f(*args, **kwargs).
+#
+# Object specifications may have internal references to other objects, so
+# long as the graph of dependencies is acyclic. Internal object resolution
+# (step 3 above) is done after the corresponding object is created.
+#
+# 3c. Post-processing
+# -------------------
+# When training a policy, run_policy.py:cfg_post_object_hook is run on every
+# top-level key, including but not limited to those objects just created. This
+# function will optionally post-process it. Specifically, this is where
+# training and testing environments are wrapped by GymEnv's, where test_video 
+# and train_video strings are converted into VideoSchedule objects, and where 
+# stage_setup_fn is wrapped with its kwargs.
+
+# Number of cpu cores to use during training
+num_cores: 1
+
+# Policy training specific keys and their defaults
+# ------------------------------------------------
+
+setup_np_random_seed: 9913
+train_np_random_seed: null   # null is same as python None
+
+test_repeats: 10
+
+render_policy: False
+
+num_stages: 1
+stage_setup_fn: null
+stage_init_kwargs: {}
+
+gym_logging: False
+force_delete_all: False
+
+# Valid video schedules (see run_policy.py:parse_video_schedule):
+#   none:      no video recording
+#   cubic:     capped cubic
+#   fixed:     every episode
+#   fixed-<n>: every <n> episodes
+#
+test_video: none
+train_video: none
+
+test_trajectories: True
+train_trajectories: False
+
+# Whether to select policies by multiple criteria, not just final iteration
+select_policies: True
+
+# How many training trajectories to record, 0 means all
+num_train_trajectories: 10
+
+
+# List of user defined keys. An exception will be raised if a user file defines
+# keys not already defined in this file (run_policy.defaults) or specified in 
+# user_defined.
+user_defined: []
+
+# The home_dir is the base directory for the whole metaexperiment or experiment, 
+# e.g. for experiments/test/smcbank_meta this is out/test/smcbank_meta.
+# The base_output_dir is the directory for one experiment, possibly 
+# containing multiple instances (loop interations).
+# Output dir will be first set locally to the base output directory
+# e.g. out/test/smcbank_meta/smcbank-1-train-smcs, and then, later in processing
+# to the output for this current iteration,
+# e.g. out/test/smcbank_meta/smcbank-1-train-smcs/0
+# The final output directory will be output_dir/<STAGE>
+home_dir: null
+base_output_dir: null 
+output_dir: null       
+ 
+
+experiment_name: null
+
+
+# Whether to run training and testing phases, respectively.
+test: True
+train: True
+
+
+# The following define how the algorithm, environments, policy, and baseline
+# reference each other. You must specify the init and any additional keyword 
+# arguments. Note that train_env and test_env may be specified separately.
+# If an env object is specified, its specification (i.e., init and kwargs)
+# is copied into train_env and test_env.
+#
+dataset: null
+
+
+# test and training datasets can be set directly, but by default they are
+# computed from dataset by sklearn.train_test_split (see run_policy.py:split_dataset).
+test_size: 0.1
+test_train_seed: 521
+
+train_test_split:
+    init: +pixelworld.run_policy:split_dataset
+    kwargs:
+        dataset: +@dataset
+        test_size: +@test_size
+        test_train_seed: +@test_train_seed
+
+test_dataset: +@train_test_split+[test_dataset]
+train_dataset: +@train_test_split+[train_dataset]
+
+# env, if set, is merged into train_env and test_env (see run_policy.py:cfg_pre_resolution_hook).
+# This makes it easy to set test and training environments at once. If needed, 
+# however, train_env and test_env can be specified directly.
+env: null
+
+train_env:
+    kwargs:
+        specs: +@train_dataset+[specs]
+        labels: +@train_dataset+[labels]
+
+test_env:
+    kwargs:
+        specs: +@test_dataset+[specs]
+        labels: +@test_dataset+[labels]
+
+test_on_train_env:
+    kwargs:
+        specs: +@train_dataset+[specs]
+        labels: +@train_dataset+[labels]
+
+policy:
+    kwargs:
+        env_spec: +@train_env+.spec
+
+baseline:
+    kwargs:
+        env_spec: +@train_env+.spec
+
+algo:
+    kwargs:
+        env: +@train_env
+        policy: +@policy
+        baseline: +@baseline
+        # set a very large max_path_length here as limits should be passed into
+        # the environment's kwargs (the RLLab default is otherwise is 500).
+        max_path_length: 10000
+
+
+# What mode of processing to use for this experiment file.
+# (See use in run.py:yield_experiment_cfgs)
+mode: policy
+
+# Map given any additional dependencies which cannot be derived from references.
+# This is needed whenever the post_object_hook refers to elements of the
+# configuration. This mechanism is not strictly necessary, but simplifies the
+# implementation of some features. 
+__additional_dependencies:
+    train_env: [train_video]
+    test_env: [test_video]
+    test_on_train_env: [test_video]
+    stage_setup_fn: [stage_init_kwargs]
+
+
+# If non-null, map of pairs of names and policies to test on test and train
+# sets, respectively
+to_test_on_test: null
+to_test_on_train: null
+
+# Whether to resume an incomplete run on restart
+resume_on_restart: False

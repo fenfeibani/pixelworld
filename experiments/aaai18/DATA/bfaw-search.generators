@@ -1,0 +1,115 @@
+__include__: 
+    - search.concepts
+    - bfaw.generators # wobf1, wobf2, wobf3
+
+
+generators:
+
+
+    bfaw-self-and-target-on-floor:
+        name: bfaw-self-and-target-on-floor
+        desc: Self and target are on the floor
+        logic: "?f ?x wobf1(f,x) & target(x) & on_top(self,f) 
+                & potential_container(x)"     
+
+    bfaw-self-and-target-and-nontarget-on-floor:
+        name: bfaw-self-and-target-and-nontarget-on-floor
+        desc: Self, a target, and a nontarget are on the floor
+        logic: "?f ?x ?y wobf2(f,x,y) & target(x) & ~target(y) & on_top(self,f) 
+                & potential_container(x) & potential_container(y) & ~near(x,y)"
+
+
+
+    bfaw-self-left-of-target-on-floor:
+        name: bfaw-self-left-of-target
+        desc: Self is left of a target that is on the floor
+        logic: "?f ?x bfaw-self-and-target-on-floor(f,x) 
+                & dir_left_of(self,x)"
+
+    bfaw-self-right-of-target-on-floor:
+        name: bfaw-self-right-of-target
+        desc: Self is right of a target that is on the floor
+        logic: "?f ?x bfaw-self-and-target-on-floor(f,x) 
+                & dir_right_of(self,x)"
+
+
+
+    bfaw-self-left-of-target-and-touches-nontarget-on-floor:
+        name: bfaw-self-left-of-target-and-touches-nontarget-on-floor
+        desc: Self is left of a target and touches a nontarget on the floor
+        logic: "?f ?x ?y bfaw-self-and-target-and-nontarget-on-floor(f,x,y) 
+                & dir_left_of(self,x) & touches(self,y)"
+
+    bfaw-self-right-of-target-and-touches-nontarget-on-floor:
+        name: bfaw-self-right-of-target-and-touches-nontarget-on-floor
+        desc: Self is right of a target and touches a nontarget on the floor
+        logic: "?f ?x ?y bfaw-self-and-target-and-nontarget-on-floor(f,x,y) 
+                & dir_right_of(self,x) & touches(self,y)"
+
+
+
+    bfaw-self-left-of-target-and-right-of-nontarget-on-floor:
+        name: bfaw-self-left-of-target-and-right-of-nontarget-on-floor 
+        desc: Self is left of a target and right of a nontarget on the floor
+        logic: "?f ?x ?y bfaw-self-and-target-and-nontarget-on-floor(f,x,y) 
+                & dir_left_of(self,x) & dir_right_of(self,y)"
+
+    bfaw-self-right-of-target-and-left-of-nontarget-on-floor:
+        name: bfaw-self-right-of-target-and-left-of-nontarget-on-floor
+        desc: Self is right of a target and left of a nontarget on the floor
+        logic: "?f ?x ?y bfaw-self-and-target-and-nontarget-on-floor(f,x,y) 
+                & dir_right_of(self,x) & dir_left_of(self,y)"
+
+
+    bfaw-self-left-of-target-and-right-obstacle-on-floor:
+        name: bfaw-self-left-of-target-and-right-obstacle-on-floor 
+        desc: Self is left of a target with an obstacle on the floor
+        logic: "?f ?x ?y bfaw-self-and-target-and-nontarget-on-floor(f,x,y) 
+                & dir_left_of(self,x) & dir_left_of(self,y) & dir_left_of(y,x)"
+
+    bfaw-self-right-of-target-and-left-obstacle-on-floor:
+        name: bfaw-self-right-of-target-and-left-obstacle-on-floor
+        desc: Self is right of a target with an obstacle on the floor
+        logic: "?f ?x ?y bfaw-self-and-target-and-nontarget-on-floor(f,x,y) 
+                & dir_right_of(self,x) & dir_right_of(self,y) & dir_right_of(y,x)"
+
+
+
+    bfaw-self-and-two-containers-in-nontarget:
+        name: bfaw-self-and-two-containers-in-nontarget
+        desc: Self and two containers on the floor, self is in nontarget
+        logic: "?f ?x ?y wobf2(f,x,y) & container(x) & container(y) & ~touches(x,y)
+                & ~target(x) & target(y) & inside_supported(self,x)"
+
+    bfaw-self-and-two-containers-in-left-nontarget:
+        name: bfaw-self-and-two-containers-in-left-nontarget
+        desc: Self and two containers on the floor, self is in left nontarget
+        logic: "?f ?x ?y wobf2(f,x,y) & container(x) & container(y) & ~touches(x,y)
+                & ~target(x) & target(y) & inside_supported(self,x) & left_of(x,y)"
+
+    bfaw-self-and-two-containers-in-right-nontarget:
+        name: bfaw-self-and-two-containers-in-right-nontarget
+        desc: Self and two containers on the floor, self is in right nontarget
+        logic: "?f ?x ?y wobf2(f,x,y) & container(x) & container(y) & ~touches(x,y)
+                & ~target(x) & target(y) & inside_supported(self,x) & right_of(x,y)"                    
+
+
+    bfaw-self-and-two-potential-containers-in-nontarget:
+        name: bfaw-self-and-two-potential-containers-in-nontarget
+        desc: Self and two containers on the floor, self is in nontarget
+        logic: "?f ?x ?y wobf2(f,x,y) & potential-container(x) & potential-container(y) 
+            & ~touches(x,y) & ~target(x) & target(y) & inside_supported(self,x)"
+
+    bfaw-self-and-two-potential-containers-in-left-nontarget:
+        name: bfaw-self-and-two-potential-containers-in-left-nontarget
+        desc: Self and two containers on the floor, self is in nontarget
+        logic: "?f ?x ?y wobf2(f,x,y) & potential-container(x) & potential-container(y) 
+            & ~touches(x,y) & ~target(x) & target(y) & inside_supported(self,x) & left_of(x,y)"
+
+    bfaw-self-and-two-potential-containers-in-right-nontarget:
+        name: bfaw-self-and-two-potential-containers-in-right-nontarget
+        desc: Self and two containers on the floor, self is in nontarget
+        logic: "?f ?x ?y wobf2(f,x,y) & potential-container(x) & potential-container(y) 
+            & ~touches(x,y) & ~target(x) & target(y) & inside_supported(self,x) & right_of(x,y)"
+
+

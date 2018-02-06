@@ -1,0 +1,174 @@
+# Concepts apply to any object type, but mainly intended for use with small_blobs
+
+concepts:
+
+
+    # One object 
+    # --------------------------------------------------------------------------
+
+
+    object-on-floor:
+        name: object-on-floor
+        desc: "There is an object on the floor"
+        logic: "?f ?x floor(f) & on_top(x,f)"
+
+    slob-on-floor:
+        name: slob-on-floor
+        desc: "There is a small blob on the floor"
+        logic: "?f ?x floor(f) & small_blob(x) & on_top(x,f)"
+
+    object-and-self-on-floor:
+        name: object-and-self-on-floor
+        desc: "There is an object and self somewhere on the floor"
+        logic: "?f ?x object-on-floor(f,x) & on_top(self,f)"
+
+    slob-and-self-on-floor:
+        name: slob-and-self-on-floor
+        desc: "There is a small blob and self somewhere on the floor"
+        logic: "?f ?x slob-on-floor(f,x) & on_top(self,f)"
+
+    object-touches-self-on-floor:
+        name: object-touches-self-on-floor
+        desc: "There exists a object adjacent to self"
+        logic: "?f ?x object-and-self-on-floor(f,x) & touches(self,x)"
+
+    slob-touches-self-on-floor:
+        name: slob-touches-self-on-floor
+        desc: "There exists a small blob adjacent to self"
+        logic: "?f ?x slob-and-self-on-floor(f,x) & touches(self,x)"
+    
+    object-left-touches-self-on-floor:
+        name: object-touches-self-on-floor
+        desc: "There exists a object adjacent to self"
+        logic: "?f ?x object-touches-self-on-floor(f,x) & dir_left_of(x,self)"
+
+    slob-left-touches-self-on-floor:
+        name: slob-left-touches-self-on-floor
+        desc: "There exists a small blob left-adjacent to self"
+        logic: "?f ?x slob-touches-self-on-floor(f,x) & dir_left_of(x,self)"
+
+    object-right-touches-self-on-floor:
+        name: object-touches-self-on-floor
+        desc: "There exists a object adjacent to self"
+        logic: "?f ?x object-touches-self-on-floor(f,x) & dir_right_of(x,self)"
+
+    slob-right-touches-self-on-floor:
+        name: slob-touches-self-on-floor
+        desc: "There exists a small blob right-adjacent to self"
+        logic: "?f ?x slob-touches-self-on-floor(f,x) & dir_right_of(x,self)"
+
+    object-somewhere-left-on-floor:
+        name: object-somewhere-left-on-floor
+        desc: "There exists a object somewhere to the left of self"
+        logic: "?f ?x object-and-self-on-floor(f,x) & dir_left_of(x,self)"
+
+    object-somewhere-right-on-floor:
+        name: object-somewhere-right-on-floor
+        desc: "There exists a object somewhere to the right of self"
+        logic: "?f ?x object-and-self-on-floor(f,x) & dir_right_of(x,self)"        
+
+    object-away-left-on-floor:
+        name: object-away-left-on-floor
+        desc: "Object is left of and not adjacent to a self, on the floor"    
+        logic: "?f ?x object-somewhere-left-on-floor(f,x) & ~touches(self,x)"
+
+    object-away-right-on-floor:
+        name: object-away-right-on-floor
+        desc: "Object is right of and not adjacent to a self, on the floor" 
+        logic: "?f ?x object-somewhere-right-on-floor(f,x) & ~touches(self,x)"
+
+
+    self-ontop-object-on-floor:
+        name: self-ontop-object-on-floor
+        desc: "Self is on top of a object that is on the floor"    
+        logic: "?f ?x floor(f) & on_top(x,f) & on_top(self,x)"
+
+    self-ontop-slob-on-floor:
+        name: self-ontop-slob-on-floor
+        desc: "Self is on top of a small blob that is on the floor"    
+        logic: "?f ?x small_blob(x) & floor(f) & on_top(x,f) & on_top(self,x)"
+
+
+    object-above-floor:
+        name: object-above-floor
+        desc: "There is an object above the floor"
+        logic: "?f ?x floor(f) & above(x,f) & ~touches(x,f)"        
+
+
+
+    # Two objects
+    # --------------------------------------------------------------------------
+
+    two-objects-on-floor:
+        name: two-objects-on-floor
+        desc: "There are two objects on the floor"
+        logic: "?f ?x ?y floor(f) & on_top(x,f) & on_top(y,f)"
+
+    two-objects-and-self-on-floor:
+        name: two-objects-and-self-on-floor
+        desc: "There exist two objects and self on the floor"
+        logic: "?f ?x ?y two-objects-on-floor(f,x,y) & on_top(self,f)"
+
+    two-objects-somewhere-left-on-floor:
+        name: two-objects-somewhere-left-on-floor
+        desc: "There exist two objects somewhere to the left of self"
+        logic: "?f ?x ?y two-objects-and-self-on-floor(f,x,y) & dir_left_of(x,self) & dir_left_of(y,self)"
+
+    two-objects-somewhere-right-on-floor:
+        name: two-objects-somewhere-right-on-floor
+        desc: "There exist two objects somewhere to the right of self"
+        logic: "?f ?x ?y two-objects-and-self-on-floor(f,x,y) & dir_right_of(x,self) & dir_right_of(y,self)"
+
+    two-objects-one-left-one-right-on-floor:
+        name: two-objects-one-left-one-right-on-floor
+        desc: "There exist two objects somewhere, one to the left, one to the right of self"
+        logic: "?f ?x ?y two-objects-and-self-on-floor(f,x,y) & dir_left_of(x,self) & dir_right_of(y,self)"
+
+    two-objects-one-on-floor-one-above-floor:  
+        name: two-objects-one-on-floor-one-above-floor
+        desc: "There is one object on floor and one object above floor"
+        logic: "?f ?x ?y object-and-self-on-floor(f,x) & above(y,f) & ~touches(y,f)"  
+
+
+
+    # Three objects
+    # --------------------------------------------------------------------------
+
+    three-objects-on-floor:
+        name: three-objects-on-floor
+        desc: "There are three objects on the floor"
+        logic: "?f ?x ?y ?z floor(f) & on_top(x,f) & on_top(y,f) & on_top(z,f)"
+
+    three-objects-and-self-on-floor:
+        name: three-objects-and-self-on-floor
+        desc: "There exist three objects and self on the floor"
+        logic: "?f ?x ?y ?z three-objects-on-floor(f,x,y,z) & on_top(self,f)"
+
+    three-objects-left-on-floor:
+        name: three-objects-left-on-floor
+        desc: "There exist three objects somewhere to the left of self"
+        logic: "?f ?x ?y ?z three-objects-and-self-on-floor(f,x,y,z) 
+                & dir_left_of(x,self) & dir_left_of(y,self) & dir_left_of(z,self)"
+
+    three-objects-right-on-floor:
+        name: three-objects-right-on-floor
+        desc: "There exist three objects somewhere to the right of self"
+        logic: "?f ?x ?y ?z three-objects-and-self-on-floor(f,x,y,z) 
+                & dir_right_of(x,self) & dir_right_of(y,self) & dir_right_of(z,self)"
+
+    one-object-left-two-objects-right-on-floor:
+        name: one-object-left-two-objects-right-on-floor
+        desc: "There exist three objects, one left and two right of self"
+        logic: "?f ?x ?y ?z three-objects-and-self-on-floor(f,x,y,z) 
+                & dir_left_of(x,self) & dir_right_of(y,self) & dir_right_of(z,self)"
+
+    one-object-right-two-objects-left-on-floor:
+        name: one-object-right-two-objects-left-on-floor
+        desc: "There exist three objects, one right and two left of self"
+        logic: "?f ?x ?y ?z three-objects-and-self-on-floor(f,x,y,z) 
+                & dir_right_of(x,self) & dir_left_of(y,self) & dir_left_of(z,self)"
+
+
+
+
+   

@@ -1,0 +1,116 @@
+__include__:
+    - bfaw-containment-cl.datasets
+
+
+# A dictionary of experiment name to a triple of
+#   - dataset name
+#   - a list of experiment names that precede it
+
+curriculum:
+            
+
+    # Containers
+    # --------------------------------------------------------------------------
+
+    cl_self-inside-container_vs_outside:
+        - cl_self-inside-container_vs_outside
+        - []  
+
+    cl_self-in-container_vs_outside:
+        - cl_self-in-container_vs_outside
+        - []  
+
+
+    # Containers vs noncontainers
+    # --------------------------------------------------------------------------
+
+    cl_self-touches-container_vs_noncontainer:
+        - cl_self-touches-container_vs_noncontainer
+        - []
+
+    cl_self-inside-container_vs_noncontainer:
+        - cl_self-inside-container_vs_noncontainer
+        - []
+
+    cl_self-in-container_vs_noncontainer:
+        - cl_self-in-container_vs_noncontainer
+        - []
+
+    cl_container-on-floor_vs_noncontainer:
+        - cl_container-on-floor_vs_noncontainer
+        - []
+
+
+
+    # Containers vs corners
+    # --------------------------------------------------------------------------
+
+    cl_self-touches-container_vs_corner:
+        - cl_self-touches-container_vs_corner
+        - []
+
+    cl_self-inside-container_vs_corner:
+        - cl_self-inside-container_vs_corner
+        - []
+
+    cl_self-in-container_vs_corner:
+        - cl_self-in-container_vs_corner
+        - []
+
+    cl_container-on-floor_vs_corner:
+        - cl_container-on-floor_vs_corner
+        - []
+
+
+
+
+
+
+
+    # Corners and lines
+    # --------------------------------------------------------------------------
+
+    cl_self-in-left-corner_vs_right-corner:
+        - cl_self-in-left-corner_vs_right-corner 
+        - []  
+
+    cl_self-in-left-corner_vs_on-hline:
+        - cl_self-in-left-corner_vs_on-hline
+        - []
+
+    cl_self-in-right-corner_vs_on-hline:
+        - cl_self-in-right-corner_vs_on-hline
+        - []
+
+    cl_self-in-corner_vs_on-hline:
+        - cl_self-in-corner_vs_on-hline
+        - []        
+
+
+
+
+
+    # Enclosures and partial enclosures
+    # --------------------------------------------------------------------------
+
+    cl_self-inside-enclosure_vs_nonenclosure:
+        - cl_self-inside-enclosure_vs_nonenclosure
+        - []    
+
+    cl_self-inside-left-container_vs_right-container:
+        - cl_self-inside-left-container_vs_right-container
+        - []          
+
+    cl_self-inside-left-container_vs_left-noncontainer:
+        - cl_self-inside-left-container_vs_left-noncontainer
+        - [] 
+
+    cl_self-inside-right-container_vs_right-noncontainer:
+        - cl_self-inside-right-container_vs_right-noncontainer
+        - [] 
+
+    cl_self-inside-top-container_vs_top-noncontainer:
+        - cl_self-inside-top-container_vs_top-noncontainer
+        - []
+
+        

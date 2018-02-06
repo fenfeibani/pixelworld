@@ -1,0 +1,275 @@
+__include__: [onfloor-objects.concepts, bfaw-objects.generators]
+
+
+# Dictionary mapping dataset_name to a list with two or three entries:
+#    - concept_name
+#    - list of generators
+#    - dict of additional settings (optional)
+
+datasets:
+
+
+    # Bringabout
+    # --------------------------------------------------------------------------
+
+    # Search (see also bfaw-search.datasets)
+ 
+    ba_self-touches-object_from_anywhere-on-floor:
+      - slob-touches-self-on-floor  
+      - - bfaw-object-and-self-on-floor        
+     
+    ba_self-touches-object_from_anywhere-on-floor_with_distraction:
+      - slob-touches-self-on-floor  
+      - - bfaw-object-and-self-on-floor
+        - bfaw-object-and-self-on-floor-with-distractor-floating
+        - bfaw-object-and-self-on-floor-with-distractor-floating-near
+
+    ba_self-left-touches-object_from_anywhere-on-floor:
+      - slob-right-touches-self-on-floor  
+      - - bfaw-object-and-self-on-floor 
+
+    ba_self-left-touches-object_from_anywhere-on-floor_with_distraction:
+      - slob-right-touches-self-on-floor
+      - - bfaw-object-and-self-on-floor
+        - bfaw-object-and-self-on-floor-with-distractor-floating
+        - bfaw-object-and-self-on-floor-with-distractor-floating-near
+
+    ba_self-left-touches-object_from_left-on-floor:
+      - slob-right-touches-self-on-floor
+      - - bfaw-object-right-of-self-on-floor
+
+    ba_self-left-touches-object_from_left-on-floor_with_distractors-touches-left-floating-between:
+      - slob-right-touches-self-on-floor  
+      - - bfaw-object-right-of-self-on-floor-with-distractors-touches-left-floating-between
+
+    ba_self-left-touches-object_from_left-on-floor_with_distraction:
+      - slob-right-touches-self-on-floor  
+      - - bfaw-object-right-of-self-on-floor-with-distractors-touches-left-floating-between
+        - bfaw-object-right-of-self-on-floor-with-distractor-touches-left
+        - bfaw-object-right-of-self-on-floor-with-distractor-left
+
+    ba_self-left-touches-object_from_left-obstacle-on-floor:
+      - slob-right-touches-self-on-floor
+      - - bfaw-object-right-of-self-on-floor-with-distractor-in-between
+
+    ba_self-left-touches-object_from_left-obstacle-on-floor_with_distraction:
+      - slob-right-touches-self-on-floor
+      - - bfaw-object-right-of-self-on-floor-with-distractors-in-between-left-floating
+        - bfaw-object-right-of-self-on-floor-with-distractors-in-between-left
+        - bfaw-object-right-of-self-on-floor-with-distractor-in-between
+
+
+    ba_self-right-touches-object_from_anywhere-on-floor:
+      - slob-left-touches-self-on-floor  
+      - - bfaw-object-and-self-on-floor 
+
+    ba_self-right-touches-object_from_anywhere-on-floor_with_distraction:
+      - slob-left-touches-self-on-floor
+      - - bfaw-object-and-self-on-floor
+        - bfaw-object-and-self-on-floor-with-distractor-floating
+        - bfaw-object-and-self-on-floor-with-distractor-floating-near
+
+    ba_self-right-touches-object_from_right-on-floor:
+      - slob-left-touches-self-on-floor
+      - - bfaw-object-left-of-self-on-floor
+
+    ba_self-right-touches-object_from_right-on-floor_with_distractors-touches-right-floating-between:
+      - slob-left-touches-self-on-floor  
+      - - bfaw-object-left-of-self-on-floor-with-distractors-touches-right-floating-between
+
+    ba_self-right-touches-object_from_right-on-floor_with_distraction:
+      - slob-left-touches-self-on-floor  
+      - - bfaw-object-left-of-self-on-floor-with-distractors-touches-right-floating-between
+        - bfaw-object-left-of-self-on-floor-with-distractor-touches-right
+        - bfaw-object-left-of-self-on-floor-with-distractor-right
+
+    ba_self-right-touches-object_from_right-obstacle-on-floor:
+      - slob-left-touches-self-on-floor
+      - - bfaw-object-left-of-self-on-floor-with-distractor-in-between
+
+    ba_self-right-touches-object_from_right-obstacle-on-floor_with_distraction:
+      - slob-left-touches-self-on-floor
+      - - bfaw-object-left-of-self-on-floor-with-distractors-in-between-right-floating
+        - bfaw-object-left-of-self-on-floor-with-distractors-in-between-right
+        - bfaw-object-left-of-self-on-floor-with-distractor-in-between
+
+
+
+
+    # Navigating over objects (from adjacent) 
+
+
+    ba_self-left-touches-object_from_right-touches-on-floor:
+      - slob-right-touches-self-on-floor 
+      - - bfaw-left-adjacent-object-and-self-on-floor
+
+    ba_self-left-touches-object_from_right-touches-on-floor_with_distraction:
+      - slob-right-touches-self-on-floor  
+      - - bfaw-left-adjacent-object-and-self-on-floor
+        - bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-float
+        - bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-left
+        - bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-right
+        - bfaw-left-adjacent-object-and-self-on-floor-with-distractors-near
+
+    ba_self-left-touches-object_from_ontop:
+      - slob-right-touches-self-on-floor  
+      - - bfaw-self-ontop-object-on-floor
+
+    ba_self-left-touches-object_from_ontop_with_distraction:
+      - slob-right-touches-self-on-floor
+      - - bfaw-self-ontop-object-on-floor
+        - bfaw-self-ontop-object-on-floor-with-distractor-near-float
+        - bfaw-self-ontop-object-on-floor-with-distractor-near-left
+        - bfaw-self-ontop-object-on-floor-with-distractor-near-right
+        - bfaw-self-ontop-object-on-floor-with-distractors-near
+
+
+
+    ba_self-right-touches-object_from_left-touches-on-floor:
+      - slob-left-touches-self-on-floor
+      - - bfaw-right-adjacent-object-and-self-on-floor
+
+    ba_self-right-touches-object_from_left-touches-on-floor_with_distraction:
+      - slob-left-touches-self-on-floor
+      - - bfaw-right-adjacent-object-and-self-on-floor
+        - bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-float
+        - bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-left
+        - bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-right
+        - bfaw-right-adjacent-object-and-self-on-floor-with-distractors-near
+
+    ba_self-right-touches-object_from_ontop:
+      - slob-left-touches-self-on-floor  
+      - - bfaw-self-ontop-object-on-floor
+
+    ba_self-right-touches-object_from_ontop_with_distraction:
+      - slob-left-touches-self-on-floor
+      - - bfaw-self-ontop-object-on-floor
+        - bfaw-self-ontop-object-on-floor-with-distractor-near-float
+        - bfaw-self-ontop-object-on-floor-with-distractor-near-left
+        - bfaw-self-ontop-object-on-floor-with-distractor-near-right
+        - bfaw-self-ontop-object-on-floor-with-distractors-near
+
+
+
+    ba_self-ontop-object_from_anywhere-on-floor:    
+      - self-ontop-slob-on-floor
+      - - bfaw-object-and-self-on-floor
+
+    ba_self-ontop-object_from_anywhere-on-floor_with_distraction:
+      - self-ontop-slob-on-floor
+      - - bfaw-object-and-self-on-floor
+        - bfaw-object-and-self-on-floor-with-distractor-floating
+        - bfaw-object-and-self-on-floor-with-distractor-floating-near
+
+    ba_self-ontop-object_from_left-touches-on-floor:
+      - self-ontop-slob-on-floor
+      - - bfaw-left-adjacent-object-and-self-on-floor
+
+    ba_self-ontop-object_from_left-touches-on-floor_with_distraction: 
+      - self-ontop-slob-on-floor
+      - - bfaw-left-adjacent-object-and-self-on-floor
+        - bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-float
+        - bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-left
+        - bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-right
+        - bfaw-left-adjacent-object-and-self-on-floor-with-distractors-near
+
+
+    # Make self on top of a object (from right-adjacent)
+    ba_self-ontop-object_from_right-touches-on-floor:
+      - self-ontop-slob-on-floor
+      - - bfaw-right-adjacent-object-and-self-on-floor
+
+
+    ba_self-ontop-object_from_right-touches-on-floor_with_distraction:
+      - self-ontop-slob-on-floor
+      - - bfaw-right-adjacent-object-and-self-on-floor
+        - bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-float
+        - bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-left
+        - bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-right
+        - bfaw-right-adjacent-object-and-self-on-floor-with-distractors-near
+
+
+
+
+
+    # Make self between two objects (from outside)
+    ba_self-between-two-objects_from_not-between-on-floor:
+      - two-objects-one-left-one-right-on-floor  
+      - - bfaw-two-non-adjacent-objects-left-of-self-on-floor
+        - bfaw-two-non-adjacent-objects-right-of-self-on-floor
+
+    # Make self between two objects (from left-adjacent)
+    ba_self-between-two-objects_from_left-touches-on-floor:
+      - two-objects-one-left-one-right-on-floor  
+      - - bfaw-two-non-adjacent-objects-right-of-adjacent-self-on-floor
+
+    # Make self between two objects (from right-adjacent)
+    ba_self-between-two-objects_from_right-touches-on-floor:
+      - two-objects-one-left-one-right-on-floor  
+      - - bfaw-two-non-adjacent-objects-left-of-adjacent-self-on-floor
+
+    # Make self between two objects (from left)
+    ba_self-between-two-objects_from_left-on-floor:
+      - two-objects-one-left-one-right-on-floor  
+      - - bfaw-two-non-adjacent-objects-right-of-self-on-floor
+
+    # Make self between two objects (from right)
+    ba_self-between-two-objects_from_right-on-floor:
+      - two-objects-one-left-one-right-on-floor  
+      - - bfaw-two-non-adjacent-objects-left-of-self-on-floor
+
+
+
+    # Left/right of ...
+
+    # Make self left of a object and non-adjacent
+    ba_self-away-left-of-object_from_touches-on-floor:
+      - object-away-right-on-floor
+      - - bfaw-adjacent-object-and-self-on-floor 
+
+    # Make self right of a object and non-adjacent
+    ba_self-away-right-of-object_from_touches-on-floor:
+      - object-away-left-on-floor
+      - - bfaw-adjacent-object-and-self-on-floor 
+
+    # Make self left of a object and non-adjacent
+    ba_self-away-left-of-object_from_left-touches-on-floor:
+      - object-away-right-on-floor
+      - - bfaw-right-adjacent-object-and-self-on-floor 
+
+    # Make self right of a object and non-adjacent
+    ba_self-away-right-of-object_from_right-touches-on-floor:
+      - object-away-left-on-floor
+      - - bfaw-left-adjacent-object-and-self-on-floor
+
+
+    # Make self left of two objects
+    ba_self-left-of-two-objects_from_not-left-on-floor:
+      - two-objects-somewhere-right-on-floor
+      - - bfaw-self-between-two-objects-on-floor
+        - bfaw-two-non-adjacent-objects-left-of-self-on-floor
+
+    # Make self right of two objects
+    ba_self-right-of-two-objects_from_not-right-on-floor:
+      - two-objects-somewhere-left-on-floor
+      - - bfaw-self-between-two-objects-on-floor
+        - bfaw-two-non-adjacent-objects-right-of-self-on-floor
+
+
+
+
+    # Make self second from left among three other objects (from anywhere)
+    ba_self-second_from_left_from_anywhere-on-floor:
+      - one-object-left-two-objects-right-on-floor    
+      - - bfaw-three-objects-and-self-on-floor
+
+
+    # Make self third from left among three other objects (from anywhere)
+    ba_self-second_from_right_from_anywhere-on-floor:
+      - one-object-right-two-objects-left-on-floor    
+      - - bfaw-three-objects-and-self-on-floor
+
+
+
+
+

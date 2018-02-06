@@ -1,0 +1,29 @@
+
+__include__:
+    - con2-canonical-curriculum.include
+    - bfaw-search-ba.datasets
+
+
+__gen_experiments:
+    __depends__: [__gen_data,__gen_curriculum]
+
+__gen_tests:
+    __depends__: [__gen_curriculum]    
+
+
+__gen_curriculum:
+    call: +pixelworld.exp_tools:generate_pattern
+    kwargs:
+        bindings:
+            canonical_containment_curriculum: +@canonical_containment_curriculum
+
+        name: curriculum
+
+        cfg:
+
+          ba_self-in-target-container_from_nontarget-container_canon: 
+            - ba_self-in-target-container_from_nontarget-container
+            - +@canonical_containment_curriculum
+
+
+   

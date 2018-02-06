@@ -1,0 +1,68 @@
+__include__:
+    - con2-canonical-curriculum.include
+    - bfaw-containment-ba.datasets
+
+
+__gen_experiments:
+    __depends__: [__gen_data,__gen_curriculum]
+
+__gen_tests:
+    __depends__: [__gen_curriculum]    
+
+
+__gen_curriculum:
+    call: +pixelworld.exp_tools:generate_pattern
+    kwargs:
+        bindings:
+            canonical_containment_curriculum: +@canonical_containment_curriculum
+
+        name: curriculum
+
+        cfg:
+
+          ba_self-in-container_from_on-floor_canon:   
+            - ba_self-in-container_from_on-floor
+            - +@canonical_containment_curriculum
+
+          ba_self-in-potential-container_from_on-floor_canon:  
+            - ba_self-in-potential-container_from_on-floor
+            - +@canonical_containment_curriculum
+
+          ba_self-inside-container_from_on-floor_canon:   
+            - ba_self-inside-container_from_on-floor
+            - +@canonical_containment_curriculum
+
+          ba_self-inside-potential-container_from_on-floor_canon:  
+            - ba_self-inside-potential-container_from_on-floor
+            - +@canonical_containment_curriculum
+
+
+          ba_self-in-container_from_between-potential-containers_canon:
+            - ba_self-in-container_from_between-potential-containers
+            - +@canonical_containment_curriculum
+
+          ba_self-in-container_from_between-container-and-noncontainer_canon: 
+            - ba_self-in-container_from_between-container-and-noncontainer
+            - +@canonical_containment_curriculum 
+
+          ba_self-in-container_from_self-and-container-and-noncontainer-on-floor_canon: 
+            - ba_self-in-container_from_self-and-container-and-noncontainer-on-floor
+            - +@canonical_containment_curriculum     
+
+          ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor_canon:        
+            - ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor
+            - +@canonical_containment_curriculum
+
+          ba_self-in-container_from_self-and-container-and-corner-on-floor_canon: 
+            - ba_self-in-container_from_self-and-container-and-corner-on-floor
+            - +@canonical_containment_curriculum     
+
+          ba_self-in-container_from_self-and-container-and-two-corners-on-floor_canon:        
+            - ba_self-in-container_from_self-and-container-and-two-corners-on-floor
+            - +@canonical_containment_curriculum
+
+
+
+
+
+       

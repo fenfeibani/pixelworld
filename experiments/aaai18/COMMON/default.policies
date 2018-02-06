@@ -1,0 +1,58 @@
+# Policy types
+# ------------
+
+gru:
+    policy: 
+        init: +rllab.policies.categorical_gru_policy:CategoricalGRUPolicy
+mlp:
+    policy: 
+        init: +rllab.policies.categorical_mlp_policy:CategoricalMLPPolicy
+
+policy_base_init:
+    policy: 
+        kwargs:
+            weight_signal: 1
+            weight_nonsignal: 20
+            weight_smc: 20
+
+gru_init:
+    __inherits__: [policy_base_init]
+    policy: 
+        init: +pixelworld.policies.init_policy:InitCategoricalGRUPolicy
+mlp_init:
+    __inherits__: [policy_base_init]
+    policy: 
+        init: +pixelworld.policies.init_policy:InitCategoricalMLPPolicy
+
+sizes32:
+    policy: 
+        kwargs:
+            hidden_sizes: [32]
+sizes32-32:
+    policy: 
+        kwargs:
+            hidden_sizes: [32, 32]
+sizes64:
+    policy: 
+        kwargs:
+            hidden_sizes: [64]
+
+gru32:
+    __inherits__: [gru, sizes32]
+mlp32:
+    __inherits__: [mlp, sizes32]
+mlp32-32:
+    __inherits__: [mlp, sizes32-32]
+gru64:
+    __inherits__: [gru, sizes64]
+mlp64:
+    __inherits__: [mlp, sizes64]
+
+gru32_init:
+    __inherits__: [gru_init, sizes32]
+mlp32_init:
+    __inherits__: [mlp_init, sizes32]
+gru64_init:
+    __inherits__: [gru_init, sizes64]
+mlp64_init:
+    __inherits__: [mlp_init, sizes64]

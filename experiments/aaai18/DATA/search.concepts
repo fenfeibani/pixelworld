@@ -1,0 +1,36 @@
+concepts:    
+
+    target-on-floor:
+        name: target-on-floor
+        desc: "Whether there is a target on the floor"
+        logic: "?f ?x floor(f) & target(x) & on_top(x,f)"
+
+    nontarget-on-floor:
+        name: nontarget-on-floor
+        desc: "Whether there is a target on the floor"
+        logic: "?f ?x floor(f) & ~target(x) & on_top(x,f)"
+
+    self-and-target-on-floor:
+        name: self-and-target-on-floor
+        desc: "Whether self and a target are on the floor"
+        logic: "?f ?x target-on-floor(f,x) & on_top(self,f)"
+
+    self-and-target-and-nontarget-on-floor:
+        name: self-and-target-and-nontarget-on-floor
+        desc: "Whether self and a target and a nontarget are on the floor"
+        logic: "?f ?x ?y target-on-floor(f,x) & on_top(self,f) & ~target(y) & on_top(y,f)"
+
+    self-at-target-on-floor:
+        name: self-at-target-on-floor
+        desc: "Whether self is adjacent to a target on the floor"
+        logic: "?f ?x self-and-target-on-floor(f,x) & touches(self,x)"  
+
+    self-in-target-container:
+        name: self-in-target-container
+        desc: "Whether self is in a target container"     
+        logic: "?x target(x) & container(x) & inside_supported(self,x)"
+
+
+
+
+

@@ -1,0 +1,41 @@
+generators:
+
+    blue-floor:
+        name: blue-floor
+        desc: There is a blue floor
+        logic: ?f floor(f) & blue(f)
+
+
+    # Blue-floor-white-objects    
+    bfw1:
+        name: bfw1
+        desc: Blue floor one white object
+        logic: "?f ?x blue-floor(f) & white(x)"
+
+    bfw2:
+        name: bfw2
+        desc: Blue floor two white objects
+        logic: "?f ?x ?y blue-floor(f) & white(x) & white(y)"
+
+    bfw3:
+        name: bfw3
+        desc: Blue floor three white objects
+        logic: "?f ?x ?y ?z blue-floor(f) & white(x) & white(y) & white(z)"        
+
+
+
+    # White on blue floor
+    wobf1:
+        name: wobf1
+        desc: One white object on a blue floor 
+        logic: "?f ?x bfw1(f,x) & on_top(x,f)"
+
+    wobf2:
+        name: wobf2
+        desc: Two white objects on a blue floor 
+        logic: "?f ?x ?y bfw2(f,x,y) & on_top(x,f) & on_top(y,f)"
+
+    wobf3:
+        name: wobf3
+        desc: Three white objects on a blue floor 
+        logic: "?f ?x ?y ?z bfw3(f,x,y,z) & on_top(x,f) & on_top(y,f) & on_top(z,f)"

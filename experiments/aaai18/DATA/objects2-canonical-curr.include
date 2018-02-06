@@ -1,0 +1,63 @@
+# Max    Idx  Avg      Name
+# 1.00    0   1.00     out/aaai18/objects1-sig/ba_self-away-left-of-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    3   0.98     out/aaai18/objects1-sig/ba_self-away-right-of-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    2   0.91     out/aaai18/objects1-sig/ba_self-between-two-objects_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.98    2   0.76     out/aaai18/objects1-sig/ba_self-between-two-objects_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    0   1.00     out/aaai18/objects1-sig/ba_self-left-touches-object_from_ontop/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.98    2   0.58     out/aaai18/objects1-sig/ba_self-left-touches-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    0   1.00     out/aaai18/objects1-sig/ba_self-ontop-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.76    4   0.72     out/aaai18/objects1-sig/ba_self-ontop-object_from_left-touches-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    0   1.00     out/aaai18/objects1-sig/ba_self-ontop-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    0   0.99     out/aaai18/objects1-sig/ba_self-ontop-object_from_right-touches-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    2   0.99     out/aaai18/objects1-sig/ba_self-right-touches-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.93    3   0.86     out/aaai18/objects1-sig/ba_self-right-touches-object_from_ontop/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.98    3   0.69     out/aaai18/objects1-sig/ba_self-touches-object_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.99    0   0.68     out/aaai18/objects1-sig/ba_self-touches-object_from_anywhere-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+
+# 0.80    2   0.58     out/aaai18/objects1-sig/ba_self-away-left-of-object_from_touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    1   0.97     out/aaai18/objects1-sig/ba_self-away-right-of-object_from_touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.86    4   0.64     out/aaai18/objects1-sig/ba_self-between-two-objects_from_left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.93    3   0.36     out/aaai18/objects1-sig/ba_self-between-two-objects_from_right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    2   0.37     out/aaai18/objects1-sig/ba_self-left-of-two-objects_from_not-left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    1   0.78     out/aaai18/objects1-sig/ba_self-right-of-two-objects_from_not-right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+# 0.80    1   0.62     out/aaai18/objects1-sig/ba_self-ontop-object_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.48    3   0.32     out/aaai18/objects1-sig/ba_self-between-two-objects_from_not-between-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.42    2   0.39     out/aaai18/objects1-sig/ba_self-left-touches-object_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.90    2   0.66     out/aaai18/objects1-sig/ba_self-right-touches-object_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.41    4   0.33     out/aaai18/objects1-sig/ba_self-ontop-object_from_anwhere-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.21    2   0.10     out/aaai18/objects1-sig/ba_self-second_from_left_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.20    3   0.09     out/aaai18/objects1-sig/ba_self-second_from_right_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+
+#Max Idx Avg Total   Compl   MaxItr  AvgItr  Name
+#1.00    2   0.86    out/aaai18/objects1-class/cl_adjacent-object-on-floor_vs_not/big+c+hand+curr+two_best+gru32_init+npo
+#1.00    2   0.98    out/aaai18/objects1-class/cl_self-touches-object_vs_not-touches-on-floor/big+c+hand+curr+two_best+gru32_init+npo
+#
+#0.55    0   0.53    out/aaai18/objects1-class/cl_object-above-floor_vs_no-object/big+c+hand+curr+two_best+gru32_init+npo
+#0.65    1   0.58    out/aaai18/objects1-class/cl_object-on-floor_vs_no-object/big+c+hand+curr+two_best+gru32_init+npo
+#0.66    1   0.60    out/aaai18/objects1-class/cl_object-on-floor_vs_not-on-floor/big+c+hand+curr+two_best+gru32_init+npo
+#0.64    1   0.58    out/aaai18/objects1-class/cl_object-on-floor_vs_not/big+c+hand+curr+two_best+gru32_init+npo
+#0.79    1   0.72    out/aaai18/objects1-class/cl_self-between-two-objects_vs_not-between-on-floor/big+c+hand+curr+two_best+gru32_init+npo
+#0.70    0   0.62    out/aaai18/objects1-class/cl_two-objects-on-floor_vs_not/big+c+hand+curr+two_best+gru32_init+npo
+#0.66    3   0.64    out/aaai18/objects1-class/cl_two-objects-on-floor_vs_one/big+c+hand+curr+two_best+gru32_init+npo
+#0.49    0   0.45    out/aaai18/objects1-class/cl_two-objects-on-floor_vs_two-objects-one-on-floor/big+c+hand+curr+two_best+gru32_init+npo
+#0.52    1   0.51    out/aaai18/objects1-class/cl_two-objects-one-above-and-one-on-floor_vs_not/big+c+hand+curr+two_best+gru32_init+npo
+
+
+canonical_object_curriculum:
+  - out/aaai18/objects1-class/cl_adjacent-object-on-floor_vs_not/big+c+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-class/cl_self-touches-object_vs_not-touches-on-floor/big+c+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/con1-sig/ba_self-on-something_from_directly-above/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-sig/ba_self-away-left-of-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-sig/ba_self-away-right-of-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-sig/ba_self-left-touches-object_from_ontop/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-sig/ba_self-right-touches-object_from_ontop/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-sig/ba_self-ontop-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-sig/ba_self-ontop-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+

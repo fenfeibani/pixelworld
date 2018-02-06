@@ -1,0 +1,150 @@
+__include__: 
+  - containment.concepts
+  - onfloor-misc.concepts
+  - bfaw-containment.generators
+
+# Dictionary mapping dataset_name to a list with two or three entries:
+#    - concept_name
+#    - list of generators
+#    - dict of additional settings (optional)
+
+datasets:
+
+    # --------------------------------------------------------------------------
+    # Classification
+    # --------------------------------------------------------------------------
+
+
+
+    # Containers 
+    # --------------------------------------------------------------------------
+
+    cl_self-inside-container_vs_outside:
+      - self-inside-container
+      - - bfaw-self-inside-container-on-floor
+        - bfaw-self-outside-container-on-floor
+
+    cl_self-in-container_vs_outside:
+      - self-in-container
+      - - bfaw-self-in-container-on-floor
+        - bfaw-self-outside-container-on-floor
+
+
+
+    # Containers vs noncontainers
+    # --------------------------------------------------------------------------
+
+
+    cl_self-touches-container_vs_noncontainer:
+      - self-touches-container-on-floor
+      - - bfaw-self-touches-container-on-floor
+        - bfaw-self-touches-noncontainer-on-floor
+   
+    cl_self-inside-container_vs_noncontainer:
+      - self-inside-container
+      - - bfaw-self-inside-container-on-floor
+        - bfaw-self-inside-noncontainer-on-floor
+
+    cl_self-in-container_vs_noncontainer:
+      - self-in-container
+      - - bfaw-self-in-container-on-floor
+        - bfaw-self-in-noncontainer-on-floor
+
+    cl_container-on-floor_vs_noncontainer:
+      - container-on-floor 
+      - - bfaw-self-and-container-on-floor
+        - bfaw-self-and-noncontainer-on-floor
+
+
+   
+    # Containers vs corners
+    # --------------------------------------------------------------------------
+
+
+    cl_self-touches-container_vs_corner:
+      - self-touches-container-on-floor
+      - - bfaw-self-touches-container-on-floor
+        - bfaw-self-touches-corner-on-floor
+        - bfaw-self-left-touches-left-corner-on-floor   
+        - bfaw-self-right-touches-right-corner-on-floor        
+   
+    cl_self-inside-container_vs_corner:
+      - self-inside-container
+      - - bfaw-self-inside-container-on-floor
+        - bfaw-self-inside-corner-on-floor
+
+    cl_self-in-container_vs_corner:
+      - self-in-container
+      - - bfaw-self-in-container-on-floor
+        - bfaw-self-in-corner-on-floor
+
+    cl_container-on-floor_vs_corner:
+      - container-on-floor 
+      - - bfaw-self-and-container-on-floor
+        - bfaw-self-and-corner-on-floor
+
+
+
+
+    # Corners and lines
+    # --------------------------------------------------------------------------
+
+    cl_self-in-left-corner_vs_right-corner:
+      - self-in-left-corner
+      - - bfaw-self-in-left-corner-on-floor
+        - bfaw-self-in-right-corner-on-floor
+
+    cl_self-in-left-corner_vs_on-hline:
+      - self-in-left-corner
+      - - bfaw-self-in-left-corner-on-floor
+        - bfaw-self-on-hline-on-floor
+
+    cl_self-in-right-corner_vs_on-hline:
+      - self-in-right-corner
+      - - bfaw-self-in-right-corner-on-floor
+        - bfaw-self-on-hline-on-floor
+
+    cl_self-in-corner_vs_on-hline:
+      - self-in-corner
+      - - bfaw-self-in-left-corner-on-floor
+        - bfaw-self-in-right-corner-on-floor 
+        - bfaw-self-on-hline-on-floor       
+
+
+
+    # Enclosures and partial enclosures
+    # --------------------------------------------------------------------------
+
+    cl_self-inside-enclosure_vs_nonenclosure:
+      - self-inside-enclosure
+      - - bfaw-self-inside-enclosure-on-floor
+        - bfaw-self-inside-nonenclosure-on-floor
+
+    cl_self-outside-touches-enclosure_vs_nonenclosure:
+      - self-touches-enclosure
+      - - bfaw-self-outside-touches-enclosure-on-floor
+        - bfaw-self-outside-touches-nonenclosure-on-floor
+
+    cl_self-inside-left-container_vs_right-container:
+      - self-inside-left-container
+      - - bfaw-self-inside-left-container-on-floor
+        - bfaw-self-inside-right-container-on-floor
+
+    cl_self-inside-left-container_vs_left-noncontainer:
+      - self-inside-left-container
+      - - bfaw-self-inside-left-container-on-floor
+        - bfaw-self-inside-left-noncontainer-on-floor
+
+    cl_self-inside-right-container_vs_right-noncontainer:
+      - self-inside-right-container
+      - - bfaw-self-inside-right-container-on-floor
+        - bfaw-self-inside-right-noncontainer-on-floor
+
+    cl_self-inside-top-container_vs_top-noncontainer:
+      - self-inside-top-container
+      - - bfaw-self-inside-top-container-on-floor
+        - bfaw-self-inside-top-noncontainer-on-floor
+
+
+
+

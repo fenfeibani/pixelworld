@@ -1,0 +1,132 @@
+generators:
+
+# -------------------------------- Terms ---------------------------------------
+
+# -- distractors --
+
+    distractor1:
+        name: floating-distractor1
+        desc: There is a floating distractor
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & ~touches(d,f) & near(d,self) & ~touches(d,x)
+ 
+    distractor2:
+        name: floating-distractor2
+        desc: There is a floating distractor
+        logic: ?d ?f ?x ?y d_slob(d) & white(d) & above(d,f) & ~touches(d,f) & near(d,self) & ~touches(d,x) & ~touches(d,y)
+
+    distractor3:
+        name: floating-distractor3
+        desc: There is a floating distractor
+        logic: ?d ?f ?x ?y ?z d_slob(d) & white(d) & above(d,f) & ~touches(d,f) & near(d,self) & ~touches(d,x) & ~touches(d,y) & ~touches(d,z)
+
+
+    # specific single distractors
+
+    distractor-near-float:
+        name: distractor-near-float
+        desc: There is a distractor that floats near to x
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & ~touches(d,f) & ~touches(d,x) & near(d,x)
+
+    distractor-floor:
+        name: distractor-floor
+        desc: There is a distractor on the floor
+        logic: ?d ?f d_slob(d) & white(d) & above(d,f) & touches(d,f)
+
+    distractor-left:
+        name: distractor-left
+        desc: There is a distractor (on the floor) left of x
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & dir_left_of(d,x)
+
+    distractor-right:
+        name: distractor-right
+        desc: There is a distractor (on the floor) right of x
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & dir_right_of(d,x)
+
+    distractor-right-between:
+        name: distractor-right-between
+        desc: There is a distractor (on the floor) horz. in between self and x
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & h_between(d,self,x)
+
+    distractor-left-between:
+        name: distractor-left-between
+        desc: There is a distractor (on the floor) horz. in between self and x
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & h_between(d,x,self)
+
+    distractor-touches:
+        name: distractor-touches
+        desc: There is a distractor (on the floor) that touches x
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & touches(d,x)
+
+    distractor-touches-left:
+        name: distractor-touches-left
+        desc: There is a distractor (on the floor) that left-touches x
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & touches(d,x) & dir_left_of(d,x)
+
+    distractor-touches-right:
+        name: distractor-touches-right
+        desc: There is a distractor (on the floor) that right-touches x
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & touches(d,x) & dir_right_of(d,x)
+
+    distractor-near-left:
+        name: distractor-near-left
+        desc: There is a distractor (on the floor) that is near and left of x
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & ~touches(d,x) & dir_left_of(d,x) & near(d,x)
+
+    distractor-near-right:
+        name: distractor-near-right
+        desc: There is a distractor (on the floor) that is near and right of x
+        logic: ?d ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & ~touches(d,x) & dir_right_of(d,x) & near(d,x)
+
+
+    # multiple distractors
+
+    distractors-near:
+        name: distractors-near
+        desc: There are two near distractors (on the floor), one left and one right of x
+        logic: >
+            ?d ?e ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & d_slob(e) & white(e) & above(e,f) & touches(e,f) 
+             & ~touches(d,x) & dir_right_of(d,x) & near(d,x) & ~touches(e,x) & dir_left_of(e,x) & near(e,x)
+
+
+    distractors-left-floating:
+        name: distractors-left-floating
+        desc: There is a distractor (on the floor) left of x and one floating
+        logic: >
+            ?d ?e ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & dir_left_of(d,x)
+             & d_slob(e) & white(e) & above(e,f) & near(e,f) & ~touches(e,f) & ~touches(e,x)
+
+    distractors-touches-left-floating:
+        name: distractors-touches-left-floating
+        desc: There is a distractor (on the floor) that left-touches x and one floating
+        logic: >
+            ?d ?e ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & touches(d,x) & dir_left_of(d,x)
+             & d_slob(e) & white(e) & above(e,f) & near(e,f) & ~touches(e,f) & ~touches(e,x)
+
+    distractors-touches-left-floating-between:
+        name: distractors-touches-left-floating-between
+        desc: There is a distractor (on the floor) that left-touches self and one floating in between the left distractor and x
+        logic: >
+            ?d ?e ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & touches(d,self) & dir_left_of(d,self)
+             & d_slob(e) & white(e) & above(e,f) & near(e,f) & ~touches(e,f) & ~touches(e,x) & left_of(e,x) & right_of(e,d)
+
+
+    distractors-right-floating:
+        name: distractors-right-floating
+        desc: There is a distractor (on the floor) right of x and one floating
+        logic: >
+            ?d ?e ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & dir_right_of(d,x)
+             & d_slob(e) & white(e) & above(e,f) & near(e,f) & ~touches(e,f) & ~touches(e,x)
+
+    distractors-touches-right-floating:
+        name: distractors-touches-right-floating
+        desc: There is a distractor (on the floor) that right-touches x and one floating
+        logic: >
+            ?d ?e ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & touches(d,x) & dir_right_of(d,x)
+             & d_slob(e) & white(e) & above(e,f) & near(e,f) & ~touches(e,f) & ~touches(e,x)
+
+    distractors-touches-right-floating-between:
+        name: distractors-touches-right-floating-between
+        desc: There is a distractor (on the floor) that right-touches self and one floating in between the right distractor and x
+        logic: >
+            ?d ?e ?f ?x d_slob(d) & white(d) & above(d,f) & touches(d,f) & touches(d,self) & dir_right_of(d,self)
+             & d_slob(e) & white(e) & above(e,f) & near(e,f) & ~touches(e,f) & ~touches(e,x) & right_of(e,x) & left_of(e,d)

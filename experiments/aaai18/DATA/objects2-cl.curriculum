@@ -1,0 +1,107 @@
+__include__:
+    - bfaw-objects-cl.datasets
+
+
+# Available level1 policies:
+# ----------------------------------------------------
+# out/aaai18/objects1-sig/.../big+sig+hand+curr+two_best+gru32_init+npo
+# ba_self-away-left-of-object_from_left-touches-on-floor    100%
+# ba_self-away-left-of-object_from_touches-on-floor         80%
+# ba_self-away-right-of-object_from_right-touches-on-floor  100%
+# ba_self-away-right-of-object_from_touches-on-floor        100%
+# ba_self-between-two-objects_from_left-on-floor            86%
+# ba_self-between-two-objects_from_left-touches-on-floor    100%
+# ba_self-between-two-objects_from_right-on-floor           93%
+# ba_self-between-two-objects_from_right-touches-on-floor   98%
+# ba_self-left-of-two-objects_from_not-left-on-floor        100%
+# ba_self-left-touches-object_from_ontop                    100%
+# ba_self-left-touches-object_from_right-touches-on-floor   98%
+# ba_self-ontop-object_from_anywhere-on-floor               80%
+# ba_self-ontop-object_from_left-touches-on-floor           100%
+# ba_self-ontop-object_from_right-touches-on-floor          100%
+# ba_self-right-of-two-objects_from_not-right-on-floor      100%
+# ba_self-right-touches-object_from_anywhere-on-floor       90%
+# ba_self-right-touches-object_from_left-touches-on-floor   100%
+# ba_self-right-touches-object_from_ontop                   93%
+# ba_self-touches-object_from_anywhere-on-floor             98%
+#
+#
+# out/aaai18/objects1-class/.../big+c+hand+curr+two_best+gru32_init+npo
+# cl_adjacent-object-on-floor_vs_not                        100%
+# cl_self-between-two-objects_vs_not-between-on-floor       79%
+# cl_self-touches-object_vs_not-touches-on-floor            100%
+#
+
+
+
+
+# A dictionary of experiment name to a triple of
+#   - dataset name
+#   - number of smcs to learn
+#   - a list of experiment names that precede it
+
+
+curriculum:
+
+    cl_object-above-floor_vs_no-object:    
+        - cl_object-above-floor_vs_no-object
+        - - out/aaai18/objects1-class/cl_adjacent-object-on-floor_vs_not/big+c+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+
+    cl_object-on-floor_vs_no-object:
+        - cl_object-on-floor_vs_no-object
+        - - out/aaai18/objects1-class/cl_adjacent-object-on-floor_vs_not/big+c+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+
+    cl_object-on-floor_vs_not-on-floor:
+        - cl_object-on-floor_vs_not-on-floor
+        - - out/aaai18/objects1-class/cl_adjacent-object-on-floor_vs_not/big+c+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    cl_object-on-floor_vs_not:
+        - cl_object-on-floor_vs_not
+        - - out/aaai18/objects1-class/cl_adjacent-object-on-floor_vs_not/big+c+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    cl_two-objects-on-floor_vs_not:
+        - cl_two-objects-on-floor_vs_not
+        - - out/aaai18/objects1-sig/ba_self-left-touches-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/objects1-sig/ba_self-right-touches-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+
+    cl_two-objects-on-floor_vs_one:
+        - cl_two-objects-on-floor_vs_one
+        - - out/aaai18/objects1-sig/ba_self-left-touches-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/objects1-sig/ba_self-right-touches-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    cl_two-objects-on-floor_vs_two-objects-one-on-floor:
+        - cl_two-objects-on-floor_vs_two-objects-one-on-floor
+        - - out/aaai18/objects1-sig/ba_self-left-touches-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/objects1-sig/ba_self-right-touches-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    cl_two-objects-one-above-and-one-on-floor_vs_not:
+        - cl_two-objects-one-above-and-one-on-floor_vs_not
+        - - out/aaai18/objects1-sig/ba_self-left-touches-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/objects1-sig/ba_self-right-touches-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+          - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    cl_self-between-two-objects_vs_not-between-on-floor:
+      - cl_self-between-two-objects_vs_not-between-on-floor
+      - - out/aaai18/objects1-class/cl_self-touches-object_vs_not-touches-on-floor/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/objects1-sig/ba_self-left-touches-object_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/objects1-sig/ba_self-right-touches-object_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo

@@ -1,0 +1,213 @@
+__include__: 
+  - containment.concepts
+  - onfloor-misc.concepts
+  - bfaw-containment.generators
+
+# Dictionary mapping dataset_name to a list with two or three entries:
+#    - concept_name
+#    - list of generators
+#    - dict of additional settings (optional)
+
+datasets:
+
+    # --------------------------------------------------------------------------
+    # Bringabout
+    # --------------------------------------------------------------------------
+
+
+    ba_self-on-something_from_directly-above:
+      - self-on-something
+      - - bfaw-self-directly-above-hline
+        - bfaw-self-above-floor
+
+
+
+    # Containers
+    # --------------------------------------------------------------------------
+
+
+    ba_self-in-container_from_adjacent-on-floor:
+      - self-in-container
+      - - bfaw-self-touches-container-on-floor
+
+    ba_self-in-container_from_on-floor:
+      - self-in-container
+      - - bfaw-self-and-container-on-floor    
+
+    ba_self-in-container_from_directly-above:
+      - self-in-container
+      - - bfaw-self-directly-above-container-on-floor
+
+    ba_self-in-container_from_left-touches-on-floor:
+      - self-in-container
+      - - bfaw-self-left-touches-container-on-floor
+
+    ba_self-in-container_from_right-touches-on-floor:
+      - self-in-container
+      - - bfaw-self-right-touches-container-on-floor
+
+
+
+
+    ba_self-inside-container_from_adjacent-on-floor:
+      - self-inside-container
+      - - bfaw-self-touches-container-on-floor
+
+    ba_self-inside-container_from_on-floor:
+      - self-inside-container
+      - - bfaw-self-and-container-on-floor
+
+    ba_self-inside-container_from_directly-above:
+      - self-inside-container
+      - - bfaw-self-directly-above-container-on-floor
+
+    ba_self-inside-container_from_left-touches-on-floor:
+      - self-inside-container
+      - - bfaw-self-left-touches-container-on-floor
+
+    ba_self-inside-container_from_right-touches-on-floor:
+      - self-inside-container
+      - - bfaw-self-right-touches-container-on-floor
+
+
+
+
+
+    ba_self-in-potential-container_from_adjacent-on-floor:
+      - self-in-potential-container
+      - - bfaw-self-touches-container-on-floor
+        - bfaw-self-touches-noncontainer-on-floor
+
+    ba_self-in-potential-container_from_on-floor:
+      - self-in-potential-container
+      - - bfaw-self-and-container-on-floor
+        - bfaw-self-and-noncontainer-on-floor
+
+    ba_self-in-potential-container_from_directly-above:
+      - self-in-potential-container
+      - - bfaw-self-directly-above-container-on-floor
+        - bfaw-self-directly-above-noncontainer-on-floor
+
+    ba_self-in-potential-container_from_left-touches-on-floor:
+      - self-in-potential-container
+      - - bfaw-self-left-touches-container-on-floor
+        - bfaw-self-left-touches-noncontainer-on-floor
+
+    ba_self-in-potential-container_from_right-touches-on-floor:
+      - self-in-potential-container
+      - - bfaw-self-right-touches-container-on-floor
+        - bfaw-self-right-touches-noncontainer-on-floor
+
+
+
+
+    ba_self-inside-potential-container_from_adjacent-on-floor:
+      - self-inside-potential-container
+      - - bfaw-self-touches-container-on-floor
+        - bfaw-self-touches-noncontainer-on-floor
+
+    ba_self-inside-potential-container_from_on-floor:
+      - self-inside-potential-container
+      - - bfaw-self-and-container-on-floor
+        - bfaw-self-and-noncontainer-on-floor
+
+    ba_self-inside-potential-container_from_directly-above:
+      - self-inside-potential-container
+      - - bfaw-self-directly-above-container-on-floor
+        - bfaw-self-directly-above-noncontainer-on-floor
+
+    ba_self-inside-potential-container_from_left-touches-on-floor:
+      - self-inside-potential-container
+      - - bfaw-self-left-touches-container-on-floor
+        - bfaw-self-left-touches-noncontainer-on-floor
+
+    ba_self-inside-potential-container_from_right-touches-on-floor:
+      - self-inside-potential-container
+      - - bfaw-self-right-touches-container-on-floor
+        - bfaw-self-right-touches-noncontainer-on-floor
+
+
+
+    # Go outside container ----------------
+
+    ba_self-outside-container_from_in:
+      - self-on-floor
+      - - bfaw-self-in-container-on-floor
+
+    ba_self-outside-container_from_inside:
+      - self-on-floor
+      - - bfaw-self-inside-container-on-floor
+
+    ba_self-left-touches-container-on-floor_from_in:
+      - self-left-touches-container-on-floor      
+      - - bfaw-self-in-container-on-floor
+
+    ba_self-left-touches-container-on-floor_from_inside:
+      - self-left-touches-container-on-floor      
+      - - bfaw-self-inside-container-on-floor
+
+    ba_self-right-touches-container-on-floor_from_in:
+      - self-right-touches-container-on-floor      
+      - - bfaw-self-in-container-on-floor
+
+    ba_self-right-touches-container-on-floor_from_inside:
+      - self-right-touches-container-on-floor      
+      - - bfaw-self-inside-container-on-floor
+
+
+
+
+    # Multiple potential containers -------------------------------------------
+
+
+    ba_self-in-container_from_between-container-and-noncontainer:
+      - self-in-container
+      - - bfaw-self-between-container-and-noncontainer-on-floor
+
+    ba_self-in-container_from_between-potential-containers:
+      - self-in-container
+      - - bfaw-self-between-container-and-noncontainer-on-floor
+        - bfaw-self-between-noncontainer-and-container-on-floor
+
+
+    ba_self-in-container_from_self-and-container-and-noncontainer-on-floor:
+      - self-in-container
+      - - bfaw-self-and-container-and-noncontainer-on-floor
+
+    ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor:
+      - self-in-container
+      - - bfaw-self-and-container-and-two-noncontainers-on-floor  
+
+    ba_self-in-container_from_between-container-and-corner:
+      - self-in-container
+      - - bfaw-self-between-container-and-corner-on-floor
+        - bfaw-self-between-corner-and-container-on-floor
+
+    ba_self-in-container_from_self-and-container-and-corner-on-floor:
+      - self-in-container
+      - - bfaw-self-and-container-and-corner-on-floor
+
+    ba_self-in-container_from_self-and-container-and-two-corners-on-floor:
+      - self-in-container
+      - - bfaw-self-and-container-and-two-corners-on-floor 
+
+
+
+
+    
+    # Corners and lines
+    # --------------------------------------------------------------------------
+
+
+    ba_self-on-hline_from_directly-above:
+      - self-on-hline
+      - - bfaw-self-directly-above-hline-on-floor
+
+
+
+
+
+
+
+
+

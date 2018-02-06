@@ -1,0 +1,26 @@
+concepts:
+
+
+    self-on-floor:
+        name: self-on-floor
+        desc: "Whether self is on the floor"
+        logic: "?f floor(f) & on_top(self,f)"
+
+
+
+    #************ walls **********************#  
+
+    wall-left-on-floor:
+        name: wall-somewhere-left-on-floor
+        desc: "There exists a wall somewhere to the left of the self"
+        logic: "?f ?x floor(f) & wall(x) & left_of(x, self) & on_top(self,f) & on_top(x,f)"
+
+    wall-right-on-floor:
+        name: wall-somewhere-right-on-floor
+        desc: "There exists a wall somewhere to the right of the self"
+        logic: "?f ?x floor(f) & wall(x) & right_of(x, self) & on_top(self,f) & on_top(x,f)"
+
+
+
+
+   

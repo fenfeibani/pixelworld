@@ -1,0 +1,79 @@
+__include__: 
+    - search.concepts
+    - bfaw-search.generators
+
+
+# Dictionary mapping dataset_name to a list with two or three entries:
+#    - concept_name
+#    - list of generators
+#    - dict of additional settings (optional)
+
+datasets:
+
+
+    # Bringabout
+    # ----------------------------------------------------------------------
+
+
+    ba_self-touches-target_from_anywhere-on-floor:
+      - self-at-target-on-floor
+      - - bfaw-self-left-of-target-on-floor 
+        - bfaw-self-right-of-target-on-floor
+      - {allow_targets: True}  
+
+
+
+    ba_self-touches-target_from_left-on-floor:
+      - self-at-target-on-floor
+      - - bfaw-self-left-of-target-on-floor
+      - {allow_targets: True}
+
+    ba_self-touches-target_from_left-on-floor_with_left-nontarget:
+      - self-at-target-on-floor
+      - - bfaw-self-left-of-target-and-right-of-nontarget-on-floor
+      - {allow_targets: True}
+
+    ba_self-touches-target_from_left-on-floor_with_right-obstacle:
+      - self-at-target-on-floor
+      - - bfaw-self-left-of-target-and-right-obstacle-on-floor
+      - {allow_targets: True}
+
+    ba_self-touches-target_from_right-on-floor:
+      - self-at-target-on-floor
+      - - bfaw-self-right-of-target-on-floor
+      - {allow_targets: True}
+
+    ba_self-touches-target_from_right-on-floor_with_right-nontarget:
+      - self-at-target-on-floor
+      - - bfaw-self-right-of-target-and-left-of-nontarget-on-floor
+      - {allow_targets: True}
+   
+    ba_self-touches-target_from_right-on-floor_with_left-obstacle:
+      - self-at-target-on-floor
+      - - bfaw-self-right-of-target-and-left-obstacle-on-floor
+      - {allow_targets: True}
+
+
+
+    ba_self-in-target-container_from_nontarget-container:
+      - self-in-target-container
+      - - bfaw-self-and-two-containers-in-nontarget
+      - {allow_targets: True}
+
+    ba_self-touches-target_from_nontarget-container:
+      - self-at-target-on-floor
+      - - bfaw-self-and-two-containers-in-nontarget
+      - {allow_targets: True}
+
+    ba_self-touches-left-target_from_nontarget-container:
+      - self-at-target-on-floor
+      - - bfaw-self-and-two-containers-in-right-nontarget
+      - {allow_targets: True}
+
+    ba_self-touches-right-target_from_nontarget-container:
+      - self-at-target-on-floor
+      - - bfaw-self-and-two-containers-in-left-nontarget
+      - {allow_targets: True}
+
+
+

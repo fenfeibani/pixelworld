@@ -1,0 +1,232 @@
+
+concepts:    
+
+
+
+    self-on-something:
+        name: self-on-something
+        desc: Whether self is on top of something (including the floor)
+        logic: "?x on_top(self,x)" 
+
+
+    # Containers and noncontainers
+    # --------------------------------------------------------------------------
+
+    container-on-floor:
+        name: container-on-floor
+        desc: "Whether there is a container on the floor"
+        logic: "?f ?x floor(f) & container(x) & on_top(x,f)"
+
+    noncontainer-on-floor:
+        name: noncontainer-on-floor
+        desc: "Whether there is a noncontainer on the floor"
+        logic: "?f ?x floor(f) & noncontainer(x) & on_top(x,f)"
+
+    potential-container-on-floor:    
+        name: noncontainer-on-floor
+        desc: "Whether there is a potential container on the floor"
+        logic: "?f ?x floor(f) & potential_container(x) & on_top(x,f)"    
+
+
+
+    self-and-container-on-floor:
+        name: self-and-container-on-floor
+        desc: "Whether self and a container are on the floor"
+        logic: "?f ?x container-on-floor(f,x) & on_top(self,f)"        
+
+    self-and-noncontainer-on-floor:
+        name: self-and-noncontainer-on-floor
+        desc: "Whether self and a noncontainer are on the floor"
+        logic: "?f ?x noncontainer-on-floor(f,x) & on_top(self,f)" 
+
+    self-and-potential-container-on-floor:
+        name: self-and-potential-container-on-floor
+        desc: "Whether self and a potential container are on the floor"
+        logic: "?f ?x potential-container-on-floor(f,x) & on_top(self,f)" 
+
+
+
+    self-touches-container-on-floor:
+        name: self-touches-container-on-floor
+        desc: "Whether there is a container adjacent to self on the floor"
+        logic: "?f ?x self-and-container-on-floor(f,x) & touches(self,x)"
+
+    self-left-touches-container-on-floor:
+        name: self-left-touches-container-on-floor
+        desc: "Whether there is a container right-adjacent to self on the floor"
+        logic: "?f ?x self-and-container-on-floor(f,x) & touches(self,x) & dir_left_of(self,x)"
+
+    self-left-of-container-on-floor:
+        name: self-left-of-container-on-floor
+        desc: "Whether there is a container right of self on the floor"
+        logic: "?f ?x self-and-container-on-floor(f,x) & dir_left_of(self,x)"
+
+    self-right-touches-container-on-floor:
+        name: self-right-touches-container-on-floor
+        desc: "Whether there is a container left-adjacent to self on the floor"
+        logic: "?f ?x self-and-container-on-floor(f,x) & touches(self,x) & dir_right_of(self,x)"
+
+    self-right-of-container-on-floor:
+        name: self-right-of-container-on-floor
+        desc: "Whether there is a container left of self on the floor"
+        logic: "?f ?x self-and-container-on-floor(f,x) & dir_right_of(self,x)"
+
+    self-touches-potential-container-on-floor:
+        name: self-touches-potential-container-on-floor
+        desc: "Whether there is a potential container adjacent to self on the floor"
+        logic: "?f ?x self-and-potential-container-on-floor(f,x) & touches(self,x)"
+
+
+
+    self-inside-container:
+        name: self-inside-container
+        desc: "Whether self is inside a container"
+        logic: "?x container(x) & inside(self,x)"
+
+    self-inside-noncontainer:
+        name: self-inside-noncontainer
+        desc: "Whether self is inside a noncontainer"
+        logic: "?x noncontainer(x) & inside(self,x)"
+
+    self-inside-potential-container:
+        name: self-inside-potential-container
+        desc: "Whether self is inside a potential container"
+        logic: "?x potential_container(x) & inside(self,x)"
+
+
+
+    self-in-container:
+        name: self-in-container
+        desc: "Whether self is contained and at bottom of container"
+        logic: "?x container(x) & inside_supported(self,x)"
+
+    self-in-noncontainer:
+        name: self-in-noncontainer
+        desc: "Whether self is inside a noncontainer"
+        logic: "?x noncontainer(x) & inside_supported(self,x)"
+
+    self-in-potential-container:
+        name: self-in-potential-container
+        desc: "Whether self is inside a container or noncontainer"
+        logic: "?x potential_container(x) & inside_supported(self,x)"
+
+
+
+
+    self-outside-container-on-floor: # only works for single container
+        name: self-outside-container-on-floor
+        desc: "Whether self is outside a container"
+        logic: "?x container(x) & ~inside(self,x)"  
+
+    self-outside-potential-container-on-floor: # only works for single container
+        name: self-outside-potential-container-on-floor
+        desc: "Whether self is outside a potential container"
+        logic: "?x potential_container(x) & ~inside(self,x)" 
+
+
+
+    # Corners and lines
+    # --------------------------------------------------------------------------
+
+    self-in-left-corner:
+        name: self-in-left-corner
+        desc: Whether self is in a lower left corner
+        logic: "?x lower_left_corner(x) & inside_supported(self,x)" 
+
+    self-in-right-corner:
+        name: self-in-right-corner
+        desc: Whether self is in a lower right corner
+        logic: "?x lower_right_corner(x) & inside_supported(self,x)"
+
+    self-in-corner:
+        name: self-in-corner
+        desc: Whether self is in a (lower) corner
+        logic: "?x corner(x) & inside_supported(self,x)"
+
+
+    self-inside-left-corner:
+        name: self-inside-left-corner
+        desc: Whether self is inside a lower left corner
+        logic: "?x lower_left_corner(x) & inside(self,x)" 
+
+    self-inside-right-corner:
+        name: self-inside-right-corner
+        desc: Whether self is inside a lower right corner
+        logic: "?x lower_right_corner(x) & inside(self,x)"
+
+    self-inside-corner:
+        name: self-inside-corner
+        desc: Whether self is inside a (lower) corner
+        logic: "?x corner(x) & inside(self,x)"
+
+
+    self-on-hline:
+        name: self-on-hline
+        desc: Whether self is on a horizontal line
+        logic: "?x hline(x) & on_top(self,x)"
+
+
+
+
+
+
+    # Enclosures and nonenclosures
+    # --------------------------------------------------------------------------
+
+    self-inside-enclosure:
+        name: self-inside-enclosure
+        desc: Whether self is inside an enclosure
+        logic: "?x enclosure(x) & inside(self,x)"
+
+    self-inside-nonenclosure:
+        name: self-inside-nonenclosure
+        desc: Whether self is inside a nonenclosure
+        logic: "?x nonenclosure(x) & inside(self,x)"
+
+    self-touches-enclosure:
+        name: self-touches-enclosure
+        desc: Whether self touches an enclosure
+        logic: "?x enclosure(x) & touches(self,x)"   
+         
+
+
+
+    # Partial enclosures (oriented containers)
+    # --------------------------------------------------------------------------
+
+    self-inside-left-container:
+        name: self-inside-left-container
+        desc: Whether self is inside a left container
+        logic: "?x left_container(x) & inside(self,x)"         
+
+    self-inside-right-container:
+        name: self-inside-right-container
+        desc: Whether self is inside a right container
+        logic: "?x right_container(x) & inside(self,x)"        
+
+    self-inside-top-container:
+        name: self-inside-top-container
+        desc: Whether self is inside a top container
+        logic: "?x top_container(x) & inside(self,x)"        
+
+    self-inside-left-noncontainer:
+        name: self-inside-left-container
+        desc: Whether self is inside a left noncontainer
+        logic: "?x left_noncontainer(x) & inside(self,x)"         
+
+
+    self-inside-right-noncontainer:
+        name: self-inside-right-container
+        desc: Whether self is inside a right noncontainer
+        logic: "?x right_noncontainer(x) & inside(self,x)"        
+
+    self-inside-top-noncontainer:
+        name: self-inside-top-container
+        desc: Whether self is inside a top noncontainer
+        logic: "?x top_noncontainer(x) & inside(self,x)"        
+
+
+
+
+
+

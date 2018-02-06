@@ -1,0 +1,83 @@
+canonical_containment_curriculum:
+  - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/con1-sig/ba_self-on-something_from_directly-above/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/con1-sig/ba_self-in-potential-container_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo 
+  - out/aaai18/con1-sig/ba_self-in-potential-container_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo  
+  - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_ontop/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_ontop/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-dist-sig/ba_self-ontop-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+  - out/aaai18/objects1-dist-sig/ba_self-ontop-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+
+# Available SMCs:
+#
+# 
+# - out/aaai18/con1-class/.../big+c+hand+curr+two_best+gru32_init+npo
+#     3    - cl_container-on-floor_vs_noncontainer     (vs corner)     
+#     3    - cl_self-touches-container_vs_noncontainer (vs corner)
+#
+#          - cl_self-in-container_vs_outside
+#     2    - cl_self-in-container_vs_noncontainer      (vs corner)
+#
+#          - cl_self-inside-container_vs_outside
+#          - cl_self-inside-container_vs_noncontainer  (vs corner)
+#
+#     1    - cl_self-in-left-corner_vs_on-hline
+#     1    - cl_self-in-right-corner_vs_on-hline
+
+#
+#
+# - out/aaai18/con1-sig/.../big+sig+hand+curr+two_best+gru32_init+npo
+#     1    - ba_self-on-something_from_directly-above 
+#
+#          - ba_self-in-container_from_adjacent-on-floor 
+#          - ba_self-in-container_from_on-floor   
+#          - ba_self-in-container_from_directly-above 
+#     1    - ba_self-in-container_from_left-touches-on-floor
+#     1    - ba_self-in-container_from_right-touches-on-floor
+#     1    - ba_self-left-touches-container_from_in
+#     1    - ba_self-right-touches-container_from_in      
+#
+#          - ba_self-inside-container_from_adjacent-on-floor 
+#          - ba_self-inside-container_from_on-floor   
+#          - ba_self-inside-container_from_directly-above 
+#          - ba_self-inside-container_from_left-touches-on-floor
+#          - ba_self-inside-container_from_right-touches-on-floor
+#          - ba_self-left-touches-container_from_inside
+#          - ba_self-right-touches-container_from_inside
+
+
+# - out/aaai18/search1-sig/.../big+sig+hand+curr+two_best+gru32_init+npo
+#     1    - ba_self-touches-target_from_left-on-floor_with_left-nontarget
+#     1    - ba_self-touches-target_from_right-on-floor_with_right-nontarget
+#          - ba_self-in-target-container_from_nontarget-container
+#          - ba_self-touches-target_from_nontarget-container
+#          - ba_self-touches-left-target_from_nontarget-container
+#          - ba_self-touches-right-target_from_nontarget-container
+#
+#
+
+# - out/aaai18/objects1-dist-sig    (also _with_distraction)
+#          - ba_self-left-touches-object_from_ontop
+#          - ba_self-right-touches-object_from_ontop
+#          - ba_self-ontop-object_from_left-touches-on-floor
+#          - ba_self-ontop-object_from_right-touches-on-floor
+#          (also includes possible replacements for search1-sig policies)
+
+
+
+  
+
+
+
+
+
+
+
+       

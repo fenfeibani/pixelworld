@@ -1,0 +1,8 @@
+__include__: [bringabout.env]
+
+
+overrideable_dataset_kwargs:
+    concept_type: bringabout
+
+overrideable_variant_vals:
+    vals_goal: [sig]   # c=classification, dir=ba_direct, sig=ba_signal

@@ -1,0 +1,10 @@
+
+# A list of pairs of experiment names and datasets to test on
+
+test_schedule:
+
+    - - ba_self-touches-object_from_anywhere-on-floor
+      - ba_self-touches-object_from_anywhere-on-floor_with_distraction
+
+    - - ba_self-touches-object_from_anywhere-on-floor_with_distraction
+      - ba_self-touches-object_from_anywhere-on-floor

@@ -1,0 +1,68 @@
+__include__:
+    - con2-canonical-curriculum.include
+    - bfaw-containment-cl.datasets
+
+
+
+__gen_experiments:
+    __depends__: [__gen_data,__gen_curriculum]
+
+__gen_tests:
+    __depends__: [__gen_curriculum]    
+
+
+__gen_curriculum:
+    call: +pixelworld.exp_tools:generate_pattern
+    kwargs:
+        bindings:
+            canonical_containment_curriculum: +@canonical_containment_curriculum
+
+        name: curriculum
+
+        cfg:
+
+
+          cl_self-in-container_vs_noncontainer_canon:  
+            - cl_self-in-container_vs_noncontainer
+            - +@canonical_containment_curriculum
+
+          cl_self-in-container_vs_corner_canon:  
+            - cl_self-in-container_vs_corner
+            - +@canonical_containment_curriculum
+
+          cl_self-inside-container_vs_noncontainer_canon:    
+            - cl_self-inside-container_vs_noncontainer
+            - +@canonical_containment_curriculum
+
+          cl_self-inside-container_vs_corner_canon:    
+            - cl_self-inside-container_vs_corner
+            - +@canonical_containment_curriculum
+
+          cl_self-touches-container_vs_noncontainer_canon:  
+            - cl_self-touches-container_vs_noncontainer
+            - +@canonical_containment_curriculum
+
+          cl_self-touches-container_vs_corner_canon:  
+            - cl_self-touches-container_vs_noncontainer
+            - +@canonical_containment_curriculum
+
+          cl_container-on-floor_vs_noncontainer_canon:       
+            - cl_container-on-floor_vs_noncontainer
+            - +@canonical_containment_curriculum
+
+          cl_container-on-floor_vs_corner_canon:       
+            - cl_container-on-floor_vs_corner
+            - +@canonical_containment_curriculum
+
+
+          cl_self-inside-enclosure_vs_nonenclosure_canon:
+            - cl_self-inside-enclosure_vs_nonenclosure
+            - +@canonical_containment_curriculum  
+              
+
+
+
+
+
+
+

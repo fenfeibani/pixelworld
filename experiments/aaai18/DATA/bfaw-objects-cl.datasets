@@ -1,0 +1,107 @@
+__include__: [onfloor-objects.concepts, bfaw-objects.generators]
+
+
+# Dictionary mapping dataset_name to a list with two or three entries:
+#    - concept_name
+#    - list of generators
+#    - dict of additional settings (optional)
+
+datasets:
+
+
+    # Classification
+    # --------------------------------------------------------------------------
+
+    # Is self touching an object?
+    cl_self-touches-object_vs_not-touches-on-floor:
+      - object-touches-self-on-floor  
+      - - bfaw-object-and-self-on-floor    
+
+    # Is self between two objects
+    cl_self-between-two-objects_vs_not-between-on-floor:
+      - two-objects-one-left-one-right-on-floor  
+      - - bfaw-two-non-adjacent-objects-and-self-on-floor
+
+    # Is there an object on the floor?
+    cl_object-on-floor_vs_not-on-floor:
+      - object-on-floor
+      - - bfaw-object-and-self-on-floor
+        - bfaw-self-on-floor-and-floating-object
+
+    cl_object-on-floor_vs_no-object:
+      - object-on-floor
+      - - bfaw-object-and-self-on-floor
+        - bfaw-self-on-floor
+
+    cl_object-on-floor_vs_not:
+      - object-on-floor
+      - - bfaw-object-and-self-on-floor
+        - bfaw-self-on-floor
+        - bfaw-self-on-floor-and-floating-object
+
+
+    # Is the adjacent object on the floor
+    cl_adjacent-object-on-floor_vs_not:
+      - object-touches-self-on-floor
+      - - bfaw-adjacent-object-and-self-on-floor
+        - bfaw-non-adjacent-object-and-self-on-floor
+        - bfaw-self-on-floor-and-floating-object-adjacent
+
+
+    # Are there two objects on the floor?
+    cl_two-objects-on-floor_vs_one:
+      - two-objects-on-floor
+      - - bfaw-two-non-adjacent-objects-and-self-on-floor
+        - bfaw-object-and-self-on-floor
+
+    cl_two-objects-on-floor_vs_two-objects-one-on-floor:
+      - two-objects-on-floor
+      - - bfaw-two-non-adjacent-objects-and-self-on-floor
+        - bfaw-self-and-two-objects-one-on-floor
+
+    cl_two-objects-on-floor_vs_not:
+      - two-objects-on-floor
+      - - bfaw-two-non-adjacent-objects-and-self-on-floor
+        - bfaw-self-and-two-objects-one-on-floor
+        - bfaw-object-and-self-on-floor
+        - bfaw-self-on-floor
+
+
+    # Is there an object above the floor?
+    cl_object-above-floor_vs_no-object:
+      - object-above-floor
+      - - bfaw-self-on-floor-and-floating-object
+        - bfaw-self-on-floor
+
+    # Is there one object above and one object on the floor?
+    cl_two-objects-one-above-and-one-on-floor_vs_not:
+      - two-objects-one-on-floor-one-above-floor
+      - - bfaw-self-and-two-objects-one-on-floor
+        - bfaw-two-objects-and-self-on-floor
+        - bfaw-self-and-two-objects-above-floor
+
+
+
+  
+    # Is self touching a single pixel?
+
+
+
+    # Is self touching a horizontal line?
+
+
+
+    # Is self touching a vertical line?
+
+
+
+    # Is self touching a corner?  (lower_left_corner, ...) 
+
+
+    # Are the objects on left and right similar types? (pixel,hline,vline,corner)
+    
+
+    # Are the corners on left and right similar types?
+
+
+    # Are the objects on left and right the same shape?

@@ -1,0 +1,8 @@
+mode: meta
+
+__include__:
+    - COMMON/common.exp
+    - COMMON/classification.exp  
+    - COMMON/level2.exp     
+    - DATA/obj-con2-canon-cl.curriculum
+#    - COMMON/test.exp     # uncomment for test mode    

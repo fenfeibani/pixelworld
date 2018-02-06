@@ -1,0 +1,2 @@
+Animated GIFs of Demos (smc.env.pixelworld.demo.Demo) can be saved using
+Demo.save_gif().

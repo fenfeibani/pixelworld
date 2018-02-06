@@ -1,0 +1,137 @@
+__include__:
+  - containment.concepts
+  - onfloor-objects.concepts
+  - onfloor-misc.concepts
+  - bfaw-containment.generators
+  - bfaw-objects.generators
+  - bfaw-objects.distractors
+
+
+# Dictionary mapping dataset_name to a list with two or three entries:
+#    - concept_name
+#    - list of generators
+#    - dict of additional settings (optional)
+
+datasets:
+
+    # --------------------------------------------------------------------------
+    # Classification
+    # --------------------------------------------------------------------------
+
+
+
+    # Individual containers and other objects
+    # --------------------------------------------------------------------------
+
+    # -- directional --
+
+    ### left
+    cl_self-left-touches-container_vs_object:
+      - self-left-touches-container-on-floor
+      - - bfaw-self-left-touches-container-on-floor
+        - bfaw-right-adjacent-object-and-self-on-floor
+
+    cl_self-left-touches-container_vs_non-container:
+      - self-left-touches-container-on-floor
+      - - bfaw-self-left-touches-container-on-floor
+        - bfaw-self-left-touches-noncontainer-on-floor
+
+    cl_self-left-of-container_vs_object:
+      - self-left-of-container-on-floor
+      - - bfaw-self-left-of-container-on-floor
+        - bfaw-object-right-of-self-on-floor
+
+    cl_self-left-of-container_vs_non-container:
+      - self-left-of-container-on-floor
+      - - bfaw-self-left-of-container-on-floor
+        - bfaw-self-left-of-noncontainer-on-floor
+
+
+    ### right
+    cl_self-right-touches-container_vs_object:
+      - self-right-touches-container-on-floor
+      - - bfaw-self-right-touches-container-on-floor
+        - bfaw-left-adjacent-object-and-self-on-floor
+
+    cl_self-right-touches-container_vs_non-container:
+      - self-right-touches-container-on-floor
+      - - bfaw-self-right-touches-container-on-floor
+        - bfaw-self-right-touches-noncontainer-on-floor
+
+    cl_self-right-of-container_vs_object:
+      - self-right-of-container-on-floor
+      - - bfaw-self-right-of-container-on-floor
+        - bfaw-object-left-of-self-on-floor
+   
+    cl_self-right-of-container_vs_non-container:
+      - self-right-of-container-on-floor
+      - - bfaw-self-right-of-container-on-floor
+        - bfaw-self-right-of-noncontainer-on-floor
+
+
+    # -- inside --
+
+    cl_self-inside-container_vs_rest:
+      - self-inside-container
+      - - bfaw-self-inside-container-on-floor
+        - bfaw-self-inside-noncontainer-on-floor
+        - bfaw-self-inside-enclosure-on-floor
+        - bfaw-self-inside-nonenclosure-on-floor
+        - bfaw-self-inside-left-container-on-floor
+        - bfaw-self-inside-right-container-on-floor
+
+    cl_self-inside-enclosure_vs_rest:
+      - self-inside-enclosure
+      - - bfaw-self-inside-container-on-floor
+        - bfaw-self-inside-noncontainer-on-floor
+        - bfaw-self-inside-enclosure-on-floor
+        - bfaw-self-inside-nonenclosure-on-floor
+        - bfaw-self-inside-left-container-on-floor
+        - bfaw-self-inside-right-container-on-floor
+
+    cl_self-inside-left-container_vs_rest:
+      - self-inside-left-container
+      - - bfaw-self-inside-container-on-floor
+        - bfaw-self-inside-noncontainer-on-floor
+        - bfaw-self-inside-enclosure-on-floor
+        - bfaw-self-inside-nonenclosure-on-floor
+        - bfaw-self-inside-left-container-on-floor
+        - bfaw-self-inside-right-container-on-floor
+
+    cl_self-inside-right-container_vs_rest:
+      - self-inside-right-container
+      - - bfaw-self-inside-container-on-floor
+        - bfaw-self-inside-noncontainer-on-floor
+        - bfaw-self-inside-enclosure-on-floor
+        - bfaw-self-inside-nonenclosure-on-floor
+        - bfaw-self-inside-left-container-on-floor
+        - bfaw-self-inside-right-container-on-floor
+
+
+    # Multiple containers and other objects
+    # --------------------------------------------------------------------------
+
+    # -- directional --
+
+    ### left
+    cl_self-left-of-two-objects-vs-one:
+      - two-objects-and-self-on-floor
+      - - bfaw-two-non-adjacent-objects-right-of-self-on-floor
+        - bfaw-object-right-of-self-on-floor
+
+    cl_self-left-of-one-container-of-two-objects_vs_none:
+      - self-left-of-container-on-floor
+      - - bfaw-self-left-of-container-and-object-on-floor
+        - bfaw-two-non-adjacent-objects-right-of-self-on-floor
+
+
+    ### right
+    cl_self-right-of-two-objects-vs-one:
+      - two-objects-and-self-on-floor
+      - - bfaw-two-non-adjacent-objects-left-of-self-on-floor
+        - bfaw-object-left-of-self-on-floor
+
+    cl_self-right-of-one-container-of-two-objects_vs_none:
+      - self-right-of-container-on-floor
+      - - bfaw-self-right-of-container-and-object-on-floor
+        - bfaw-two-non-adjacent-objects-left-of-self-on-floor

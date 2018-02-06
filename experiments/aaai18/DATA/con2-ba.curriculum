@@ -1,0 +1,279 @@
+__include__:
+    - bfaw-containment-ba.datasets
+
+
+# A dictionary of experiment name to a triple of
+#   - dataset name
+#   - a list of experiment names that precede it
+
+
+
+
+curriculum:
+
+
+#  -----------------------------------------------------------------------------
+
+    ba_self-in-container_from_on-floor_curr-in:   
+      - ba_self-in-container_from_on-floor
+      - - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo   
+
+    ba_self-in-container_from_on-floor_curr-inside: 
+      - ba_self-in-container_from_on-floor
+      - - out/aaai18/con1-class/cl_self-inside-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-on-something_from_directly-above/big+sig+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/con1-sig/ba_self-inside-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+    ba_self-in-potential-container_from_on-floor_curr-in:  
+      - ba_self-in-potential-container_from_on-floor
+      - - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo     
+
+    ba_self-in-potential-container_from_on-floor_curr-inside:  
+      - ba_self-in-potential-container_from_on-floor
+      - - out/aaai18/con1-class/cl_self-inside-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-on-something_from_directly-above/big+sig+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/con1-sig/ba_self-inside-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+#  -----------------------------------------------------------------------------
+
+    ba_self-inside-container_from_on-floor_curr-in:
+      - ba_self-inside-container_from_on-floor
+      - - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+    ba_self-inside-container_from_on-floor_curr-inside:
+      - ba_self-inside-container_from_on-floor
+      - - out/aaai18/con1-class/cl_self-inside-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-inside-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    ba_self-inside-potential-container_from_on-floor_curr-in:
+      - ba_self-inside-potential-container_from_on-floor
+      - - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+    ba_self-inside-potential-container_from_on-floor_curr-inside:
+      - ba_self-inside-potential-container_from_on-floor
+      - - out/aaai18/con1-class/cl_self-inside-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-inside-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+#  -----------------------------------------------------------------------------
+
+
+    ba_self-in-container_from_between-potential-containers:
+      - ba_self-in-container_from_between-potential-containers
+      - - out/aaai18/con1-class/cl_self-touches-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-class/cl_self-in-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-outside-container_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    ba_self-in-container_from_between-potential-containers_curr-in:
+      - ba_self-in-container_from_between-potential-containers
+      - - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-in-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    ba_self-in-container_from_between-potential-containers_curr-inside:
+      - ba_self-in-container_from_between-potential-containers
+      - - out/aaai18/con1-class/cl_self-inside-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-inside-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-inside-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-on-something_from_directly-above/big+sig+hand+curr+two_best+gru32_init+npo 
+
+
+#  -----------------------------------------------------------------------------
+
+    ba_self-in-container_from_between-container-and-noncontainer: 
+      - ba_self-in-container_from_between-container-and-noncontainer
+      - - out/aaai18/con1-class/cl_self-touches-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-class/cl_self-in-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-outside-container_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+    ba_self-in-container_from_between-container-and-noncontainer_curr-in: 
+      - ba_self-in-container_from_between-container-and-noncontainer
+      - - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-in-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+
+    ba_self-in-container_from_between-container-and-noncontainer_curr-inside: 
+      - ba_self-in-container_from_between-container-and-noncontainer
+      - - out/aaai18/con1-class/cl_self-inside-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-inside-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-inside-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-on-something_from_directly-above/big+sig+hand+curr+two_best+gru32_init+npo 
+         
+
+
+#  -----------------------------------------------------------------------------
+
+    ba_self-in-container_from_self-and-container-and-noncontainer-on-floor: 
+      - ba_self-in-container_from_self-and-container-and-noncontainer-on-floor
+      - - out/aaai18/con1-class/cl_self-touches-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-class/cl_self-in-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-outside-container_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo        
+
+
+    ba_self-in-container_from_self-and-container-and-noncontainer-on-floor_curr-in: 
+      - ba_self-in-container_from_self-and-container-and-noncontainer-on-floor
+      - - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-in-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    ba_self-in-container_from_self-and-container-and-noncontainer-on-floor_curr-inside: 
+      - ba_self-in-container_from_self-and-container-and-noncontainer-on-floor       
+      - - out/aaai18/con1-class/cl_self-inside-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-inside-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-inside-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-on-something_from_directly-above/big+sig+hand+curr+two_best+gru32_init+npo
+
+         
+
+    ba_self-in-container_from_self-and-container-and-corner-on-floor_curr-in: 
+      - ba_self-in-container_from_self-and-container-and-corner-on-floor
+      - - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-in-container_vs_corner/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    ba_self-in-container_from_self-and-container-and-corner-on-floor_curr-inside: 
+      - ba_self-in-container_from_self-and-container-and-corner-on-floor       
+      - - out/aaai18/con1-class/cl_self-inside-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-inside-container_vs_corner/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-inside-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-on-something_from_directly-above/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+
+
+#  -----------------------------------------------------------------------------
+
+    ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor:          
+      - ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor
+      - - out/aaai18/con1-class/cl_self-touches-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-class/cl_self-in-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-outside-container_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo 
+
+
+    ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor_curr-in:          
+      - ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor
+      - - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-in-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor_curr-inside:          
+      - ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor
+      - - out/aaai18/con1-class/cl_self-inside-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-inside-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-inside-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-on-something_from_directly-above/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+
+    ba_self-in-container_from_self-and-container-and-two-corners-on-floor_curr-in:          
+      - ba_self-in-container_from_self-and-container-and-two-corners-on-floor
+      - - out/aaai18/con1-class/cl_self-in-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-in-container_vs_corner/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-in-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_in/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+    ba_self-in-container_from_self-and-container-and-two-corners-on-floor_curr-inside:          
+      - ba_self-in-container_from_self-and-container-and-two-corners-on-floor
+      - - out/aaai18/con1-class/cl_self-inside-container_vs_outside/big+c+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-class/cl_self-inside-container_vs_corner/big+c+hand+curr+two_best+gru32_init+npo 
+        - out/aaai18/search1-sig/ba_self-touches-target_from_left-on-floor_with_left-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/search1-sig/ba_self-touches-target_from_right-on-floor_with_right-nontarget/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-inside-container_from_adjacent-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-left-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo  
+        - out/aaai18/con1-sig/ba_self-right-touches-container-on-floor_from_inside/big+sig+hand+curr+two_best+gru32_init+npo
+        - out/aaai18/con1-sig/ba_self-on-something_from_directly-above/big+sig+hand+curr+two_best+gru32_init+npo
+
+
+
+       

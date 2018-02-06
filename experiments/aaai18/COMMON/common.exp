@@ -1,0 +1,210 @@
+# NOTE:
+#   the following entries should be overridden to modify the default behavior:
+#       overrideable_dataset_kwargs
+#           modify dataset generation
+#       overrideable_variant_vals
+#           modify experiment variants generated
+#       common
+#           modify configuration file defaults
+
+__include__: [default.policies]
+
+
+common:
+    baseline: 
+        init: +rllab.baselines.linear_feature_baseline:LinearFeatureBaseline
+
+    algo:
+        kwargs:
+            batch_size: 2000    
+            whole_paths: True
+            n_itr: 200       
+
+    test_size: .5
+    train_trajectories: False
+    #num_train_trajectories: 5
+
+    force_delete_all: True
+
+    # Uncomment to disable computing max_reward and min_perplexities policies.
+    # If so, make sure to comment out the last two lines in to_test_on_test 
+    # below to ensure we don't try to test on policies that don't exist (i.e. 
+    # max_return and min_perplexity). Also comment out policy_max_return and 
+    # policy_min_perplexity.
+    #
+    #select_policies: False
+
+    resume_on_restart: True
+    gym_logging: False
+    train_video: cubic    # set gym_logging=True to enable
+    test_video: fixed-10  # set gym_logging=True to enable
+    test_repeats: 10
+
+
+# Algorithms
+# ---------
+
+trpo:
+    algo:
+        init: +rllab.algos.trpo:TRPO
+npo:
+    algo:
+        init: +rllab.algos.npo:NPO
+
+
+# Datasets
+# --------
+
+# NOTE: override the follow keys in a metaexperiment file to adjust dataset
+# generation globally for all datasets used by that metaexperiment.
+overrideable_dataset_kwargs:
+    concept_type: classification
+    num_samples: 50 
+
+    settings:
+        frame: True
+        height: 18
+        width: 35
+        default_num_samples: 20
+        fixed_floor: True
+        floor_height: 3
+        padding: 2
+        cache: True
+
+__gen_data:
+    call: +pixelworld.exp_tools:generate_pattern
+    kwargs:
+        keys: {dataset_name: [concept_name, generator_names, additional_settings]}
+        vals: +@datasets
+        bindings:
+            concepts: +@concepts
+            generators: +@generators
+            overrideable_dataset_kwargs: +@overrideable_dataset_kwargs
+
+        name: "data-{dataset_name}-big"
+        cfg:
+            dataset:
+                init: ++pixelworld.concept_csp:generate_dataset_by_name
+                kwargs:
+                    concept_dict: +@concepts
+                    generator_dict: +@generators
+                    concept_name: +@concept_name
+                    generator_names: +@generator_names
+                    seed: 0
+                    use_cache: True
+                    use_macros: True
+                    merge_macros: True
+                    additional_settings: +@additional_settings
+
+                    concept_type: +@overrideable_dataset_kwargs+[concept_type]
+                    num_samples: +@overrideable_dataset_kwargs+[num_samples]
+                    settings: +@overrideable_dataset_kwargs+[settings]
+
+
+
+
+# Experiment & test generation macros
+# -----------------------------------
+
+# NOTE: override the keys in the below in order to adjust what variants should
+# be looped over or the number of smcs.
+overrideable_variant_vals:
+    vals_dataset_size: ['big']   # ['big', 'lil']
+
+    vals_goal: [sig] # [dir,sig]   # c=classification, dir=ba_direct, sig=ba_signal
+
+    vals_embodiment: [hand] #  [hand, eye]    oldhand=orig PixelWorld
+
+    # change this to give names to the current curriculum
+    vals_currname: [curr] 
+
+    vals_filter:
+        - - two_best
+          - max_training_reward
+          - {k: 2}
+
+    vals_policy: [gru32_init]   # [mlp32, mlp32_init, gru32_init]
+
+    vals_algorithm: [npo]  #trpo
+
+    num_smcs: 5
+
+
+
+loop_over_experiment_variants:
+    kwargs:
+        bindings:
+            overrideable_variant_vals: +@overrideable_variant_vals
+            num_smcs: +@overrideable_variant_vals+[num_smcs]
+
+        loop1_1:
+            key: dataset_size
+            vals: +@overrideable_variant_vals+[vals_dataset_size]
+        loop1_2:
+            key: goal
+            vals: +@overrideable_variant_vals+[vals_goal]
+        loop1_3:
+            key: embodiment
+            vals: +@overrideable_variant_vals+[vals_embodiment]
+        loop1_4:
+            key: currname
+            vals: +@overrideable_variant_vals+[vals_currname]
+        loop1_5:
+            keys: [filter_name, filter, filter_kwargs]
+            vals: +@overrideable_variant_vals+[vals_filter]
+        loop1_6: 
+            key: policy
+            vals: +@overrideable_variant_vals+[vals_policy]
+        loop1_7:
+            key: algorithm
+            vals: +@overrideable_variant_vals+[vals_algorithm]
+
+        let1_0:
+            this_variant: "{dataset_size}+{goal}+{embodiment}+{currname}+{filter_name}+{policy}+{algorithm}"
+
+        let1_1:
+            dependent_experiments:
+                init: +pixelworld.exp_tools:get_dependent_experiments
+                kwargs:                    
+                    prior_exp_names: +@prior_exp_names
+                    this_variant: +@this_variant
+
+            dataset_filename: "dataset.{dataset_name}-{dataset_size}.pkl"
+
+
+__gen_experiments:
+    __inherits__: [loop_over_experiment_variants]
+    __depends__: [__gen_data]
+    call: +pixelworld.exp_tools:generate_pattern
+    kwargs:
+        bindings:
+            curriculum: +@curriculum
+
+        loop0:
+            keys: {exp_name: [dataset_name, prior_exp_names]}
+            vals: +@curriculum
+
+        # loop_over_experiment_variants add loops over the different experiment 
+        # settings here in keys let1_* and loop1_* defining this_variant, 
+        # dependent_experiments and dataset_filename
+
+        name: "{exp_name}/{this_variant}"
+
+        cfg:
+            __execute__: True
+            __depends__: +@dependent_experiments+[internal]
+            __inherits__: 
+                - common
+                - '{algorithm}'
+                - 'data-{dataset_name}-{dataset_size}'
+                - base_env
+                - 'env_{embodiment}_{goal}'
+                - '{policy}'
+
+            user_defined: [option_smcs, module_specs]
+
+            loop0:
+                keys: [train_np_random_seed, setup_np_random_seed]
+                range:
+                    low: 0
+                    high: +@num_smcs

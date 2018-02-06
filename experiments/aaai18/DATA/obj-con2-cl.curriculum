@@ -1,0 +1,176 @@
+__include__:
+    - bfaw-obj-containment-cl.datasets
+
+
+# A dictionary of experiment name to a triple of
+#   - dataset name
+#   - a list of experiment names that precede it
+
+curriculum:
+            
+    # Individual containers and other objects
+    # --------------------------------------------------------------------------
+
+    # -- directional --
+
+    ### left
+      cl_self-left-touches-container_vs_object-curr:
+          - cl_self-left-touches-container_vs_object
+          - - out/aaai18/objects1-dist-sig/ba_self-ontop-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-left-touches-container_vs_object-curr1:
+          - cl_self-left-touches-container_vs_object
+          - - out/aaai18/objects1-dist-sig/ba_self-ontop-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-inside-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-left-touches-container_vs_non-container-curr:
+          - cl_self-left-touches-container_vs_non-container
+          - - out/aaai18/objects1-dist-sig/ba_self-ontop-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-left-touches-container_vs_non-container-curr1:
+          - cl_self-left-touches-container_vs_non-container
+          - - out/aaai18/objects1-dist-sig/ba_self-ontop-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-inside-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-left-of-container_vs_object-curr:
+          - cl_self-left-of-container_vs_object
+          - - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/obj-con1-class/cl_self-left-touches-container_vs_object/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-left-of-container_vs_non-container-curr:
+           - cl_self-left-of-container_vs_non-container
+           - - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+             - out/aaai18/obj-con1-class/cl_self-left-touches-container_vs_non-container/big+c+hand+curr+two_best+gru32_init+npo
+
+
+
+    ### right
+      cl_self-right-touches-container_vs_object-curr:
+          - cl_self-right-touches-container_vs_object
+          - - out/aaai18/objects1-dist-sig/ba_self-ontop-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-right-touches-container_vs_object-curr1:
+          - cl_self-right-touches-container_vs_object
+          - - out/aaai18/objects1-dist-sig/ba_self-ontop-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-inside-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-right-touches-container_vs_non-container-curr:
+          - cl_self-right-touches-container_vs_non-container
+          - - out/aaai18/objects1-dist-sig/ba_self-ontop-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-right-touches-container_vs_non-container-curr1:
+          - cl_self-right-touches-container_vs_non-container
+          - - out/aaai18/objects1-dist-sig/ba_self-ontop-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-inside-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo
+
+
+      cl_self-right-of-container_vs_object-curr:
+          - cl_self-right-of-container_vs_object
+          - - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/obj-con1-class/cl_self-right-touches-container_vs_object/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-right-of-container_vs_non-container-curr:
+           - cl_self-right-of-container_vs_non-container
+           - - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+             - out/aaai18/obj-con1-class/cl_self-right-touches-container_vs_non-container/big+c+hand+curr+two_best+gru32_init+npo
+
+
+
+    # -- inside --
+
+      cl_self-inside-container_vs_rest-curr:
+          - cl_self-inside-container_vs_rest
+          - - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-inside-enclosure_vs_rest-curr:
+          - cl_self-inside-enclosure_vs_rest
+          - - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-inside-left-container_vs_rest-curr:
+          - cl_self-inside-left-container_vs_rest
+          - - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-inside-right-container_vs_rest-curr:
+          - cl_self-inside-right-container_vs_rest
+          - - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+
+
+    # Multiple containers and other objects
+    # --------------------------------------------------------------------------
+
+    # -- directional --
+
+    ### left
+      cl_self-left-of-two-objects-vs-one-curr:
+          - cl_self-left-of-two-objects-vs-one
+          - - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+      cl_self-left-of-two-objects-vs-one-curr1:
+          - cl_self-left-of-two-objects-vs-one
+          - - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_left-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_left-touches-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+
+      cl_self-left-of-two-objects-vs-one-curr2:
+          - cl_self-left-of-two-objects-vs-one
+          - - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_left-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_left-touches-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_left-obstacle-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+
+      cl_self-left-of-one-container-of-two-objects_vs_none-curr:
+          - cl_self-left-of-one-container-of-two-objects_vs_none
+          - - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_left-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-left-of-one-container-of-two-objects_vs_none-curr1:
+          - cl_self-left-of-one-container-of-two-objects_vs_none
+          - - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_left-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_left-touches-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_left-obstacle-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-inside-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo
+
+
+    ### right
+      cl_self-right-of-two-objects-vs-one-curr:
+          - cl_self-right-of-two-objects-vs-one
+          - - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+      cl_self-right-of-two-objects-vs-one-curr1:
+          - cl_self-right-of-two-objects-vs-one
+          - - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_right-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_right-touches-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+
+      cl_self-right-of-two-objects-vs-one-curr2:
+          - cl_self-right-of-two-objects-vs-one
+          - - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_right-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_right-touches-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_right-obstacle-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+
+      cl_self-right-of-one-container-of-two-objects_vs_none-curr:
+          - cl_self-right-of-one-container-of-two-objects_vs_none
+          - - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_right-touches-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-left-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-in-right-corner_vs_on-hline/big+c+hand+curr+two_best+gru32_init+npo
+
+      cl_self-right-of-one-container-of-two-objects_vs_none-curr1:
+          - cl_self-right-of-one-container-of-two-objects_vs_none
+          - - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_right-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-left-touches-object_from_right-touches-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/objects1-dist-sig/ba_self-right-touches-object_from_right-obstacle-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+            - out/aaai18/con1-class/cl_self-inside-container_vs_noncontainer/big+c+hand+curr+two_best+gru32_init+npo

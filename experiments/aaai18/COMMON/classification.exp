@@ -1,0 +1,8 @@
+__include__: [classification.env]
+
+
+overrideable_dataset_kwargs:
+    concept_type: classification
+
+overrideable_variant_vals:
+    vals_goal: [c]   # c=classification, dir=ba_direct, sig=ba_signal

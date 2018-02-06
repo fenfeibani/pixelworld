@@ -1,0 +1,375 @@
+__include__: 
+    - bfaw.generators  # wobf1/2/3, bfw1/2/3
+    - containment.concepts
+
+
+generators:
+
+    # Simple
+    # -------
+
+    bfaw-self-above-floor:
+        name: bfaw-self-above-floor
+        desc: Self is above the floor
+        logic: "?f blue-floor(f) & dir_above(self,f)"
+
+
+    # Containers, noncontainers, & corner
+    # --------------------------------------------------------------------------
+
+    bfaw-container-on-floor:
+        name: bfaw-container-on-floor
+        desc: There is a container on the floor
+        logic: "?f ?x wobf1(f,x) & container(x)"
+
+    bfaw-noncontainer-on-floor:
+        name: bfaw-noncontainer-on-floor
+        desc: There is a noncontainer on the floor
+        logic: "?f ?x wobf1(f,x) & noncontainer(x)"
+
+    bfaw-corner-on-floor:
+        name: bfaw-corner-on-floor
+        desc: There is a corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_corner(x)"
+
+
+
+    bfaw-self-and-container-on-floor:
+        name: bfaw-self-and-container-on-floor
+        desc: Self and a container on the floor
+        logic: "?f ?x wobf1(f,x) & container(x) & on_top(self,f)"
+
+    bfaw-self-and-noncontainer-on-floor:
+        name: bfaw-self-and-noncontainer-on-floor
+        desc: Self and a noncontainer on the floor
+        logic: "?f ?x wobf1(f,x) & noncontainer(x) & on_top(self,f)"
+
+    bfaw-self-and-corner-on-floor:
+        name: bfaw-self-and-corner-on-floor
+        desc: Self and a corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_corner(x) & on_top(self,f)"
+
+
+
+
+    bfaw-self-and-container-and-noncontainer-on-floor:
+        name: bfaw-self-and-container-and-noncontainer-on-floor
+        desc: Self, container, and noncontainer on the floor
+        logic: "?f ?x ?y wobf2(f,x,y) & container(x) & noncontainer(y) 
+                & on_top(self,f) & ~touches(x,y)"
+
+    bfaw-self-and-container-and-corner-on-floor:
+        name: bfaw-self-and-container-and-corner-on-floor
+        desc: Self, container, and corner on the floor
+        logic: "?f ?x ?y wobf2(f,x,y) & container(x) & lower_corner(y) 
+                & on_top(self,f) & ~touches(x,y)"
+
+
+
+    bfaw-self-between-container-and-noncontainer-on-floor:
+        name: bfaw-self-between-container-and-noncontainer-on-floor
+        desc: Self is between a container and noncontainer, on the floor
+        logic: "?f ?x ?y bfaw-self-and-container-and-noncontainer-on-floor(f,x,y)
+                & h_between(self,x,y)"  
+
+    bfaw-self-between-noncontainer-and-container-on-floor:
+        name: bfaw-self-between-noncontainer-and-container-on-floor
+        desc: Self is between a container and noncontainer, on the floor
+        logic: "?f ?x ?y bfaw-self-and-container-and-noncontainer-on-floor(f,x,y)
+                & h_between(self,y,x)"
+
+
+    bfaw-self-between-container-and-corner-on-floor:
+        name: bfaw-self-between-container-and-corner-on-floor
+        desc: Self is between a container and corner, on the floor
+        logic: "?f ?x ?y bfaw-self-and-container-and-corner-on-floor(f,x,y)
+                & h_between(self,x,y)"  
+
+    bfaw-self-between-corner-and-container-on-floor:
+        name: bfaw-self-between-corner-and-container-on-floor
+        desc: Self is between a corner and container, on the floor
+        logic: "?f ?x ?y bfaw-self-and-container-and-corner-on-floor(f,x,y)
+                & h_between(self,y,x)"
+
+
+
+    bfaw-self-and-container-and-two-noncontainers-on-floor:
+        name: bfaw-self-and-container-and-two-noncontainers-on-floor
+        desc: Self, container, and two noncontainers on the floor
+        logic: "?f ?x ?y ?z wobf3(f,x,y,z) & container(x) & noncontainer(y) & noncontainer(z) 
+                & on_top(self,f) & ~touches(x,y) & ~touches(y,z) & ~touches(x,z)"  
+
+    bfaw-self-and-container-and-two-corners-on-floor:
+        name: bfaw-self-and-container-and-two-corners-on-floor
+        desc: Self, container, and two corners on the floor
+        logic: "?f ?x ?y ?z wobf3(f,x,y,z) & container(x) & lower_corner(y) & lower_corner(z) 
+                & on_top(self,f) & ~touches(x,y) & ~touches(y,z) & ~touches(x,z)" 
+
+
+
+
+    bfaw-self-touches-container-on-floor:
+        name: bfaw-self-touches-container-on-floor
+        desc: Self touches a container
+        logic: "?f ?x bfaw-self-and-container-on-floor(f,x) & touches(self,x)"
+
+    bfaw-self-touches-noncontainer-on-floor:
+        name: bfaw-self-touches-noncontainer-on-floor
+        desc: Self touches a noncontainer
+        logic: "?f ?x bfaw-self-and-noncontainer-on-floor(f,x) & touches(self,x)"
+
+    bfaw-self-left-touches-container-on-floor:
+        name: bfaw-self-left-touches-container-on-floor
+        desc: Self left-touches a container
+        logic: "?f ?x bfaw-self-and-container-on-floor(f,x) & touches(self,x) & dir_left_of(self,x)"
+
+    bfaw-self-left-of-container-on-floor:
+        name: bfaw-self-left-of-container-on-floor
+        desc: Self is left of a container
+        logic: "?f ?x bfaw-self-and-container-on-floor(f,x) & dir_left_of(self,x)"
+
+    bfaw-self-left-touches-noncontainer-on-floor:
+        name: bfaw-self-left-touches-noncontainer-on-floor
+        desc: Self left-touches a noncontainer
+        logic: "?f ?x bfaw-self-and-noncontainer-on-floor(f,x) & touches(self,x) & dir_left_of(self,x)"
+
+    bfaw-self-left-of-noncontainer-on-floor:
+        name: bfaw-self-left-of-noncontainer-on-floor
+        desc: Self is left of a noncontainer
+        logic: "?f ?x bfaw-self-and-noncontainer-on-floor(f,x) & dir_left_of(self,x)"
+
+
+    bfaw-self-right-touches-container-on-floor:
+        name: bfaw-self-right-touches-container-on-floor
+        desc: Self right-touches a container
+        logic: "?f ?x bfaw-self-and-container-on-floor(f,x) & touches(self,x) & dir_right_of(self,x)"
+
+    bfaw-self-right-of-container-on-floor:
+        name: bfaw-self-right-of-container-on-floor
+        desc: Self is right of a container
+        logic: "?f ?x bfaw-self-and-container-on-floor(f,x) & dir_right_of(self,x)"
+
+    bfaw-self-right-touches-noncontainer-on-floor:
+        name: bfaw-self-right-touches-noncontainer-on-floor
+        desc: Self right-touches a noncontainer
+        logic: "?f ?x bfaw-self-and-noncontainer-on-floor(f,x) & touches(self,x) & dir_right_of(self,x)"
+
+    bfaw-self-right-of-noncontainer-on-floor:
+        name: bfaw-self-right-of-noncontainer-on-floor
+        desc: Self is right of a noncontainer
+        logic: "?f ?x bfaw-self-and-noncontainer-on-floor(f,x) & dir_right_of(self,x)"
+
+
+    bfaw-self-inside-container-on-floor:
+        name: bfaw-self-inside-container-on-floor
+        desc: Self is inside a container 
+        logic: "?f ?x bfaw-container-on-floor(f,x) & inside(self,x)"
+
+    bfaw-self-inside-noncontainer-on-floor:
+        name: bfaw-self-inside-noncontainer-on-floor
+        desc: Self is inside a noncontainer 
+        logic: "?f ?x bfaw-noncontainer-on-floor(f,x) & inside(self,x)"
+
+
+
+    bfaw-self-in-container-on-floor:
+        name: bfaw-self-in-container-on-floor
+        desc: Self is in a container 
+        logic: "?f ?x bfaw-container-on-floor(f,x) & inside_supported(self,x)"
+   
+    bfaw-self-in-noncontainer-on-floor:
+        name: bfaw-self-in-noncontainer-on-floor
+        desc: Self is in a noncontainer 
+        logic: "?f ?x bfaw-noncontainer-on-floor(f,x) & inside_supported(self,x)"
+
+
+
+
+    bfaw-self-outside-container-on-floor:
+        name: bfaw-self-outside-container-on-floor
+        desc: Self is outside a container
+        logic: "?f ?x bfaw-container-on-floor(f,x) & on_top(self,f)"
+
+    bfaw-self-outside-noncontainer-on-floor:
+        name: bfaw-self-outside-noncontainer-on-floor
+        desc: Self is outside a noncontainer
+        logic: "?f ?x bfaw-noncontainer-on-floor(f,x) & on_top(self,f)"
+
+
+
+    bfaw-self-directly-above-container-on-floor:
+        name: bfaw-self-directly-above-container-on-floor
+        desc: Self is hovering above a container
+        logic: "?f ?x wobf1(f,x) & container(x) & dir_above(self,x)"
+
+    bfaw-self-directly-above-noncontainer-on-floor:
+        name: bfaw-self-directly-above-noncontainer-on-floor
+        desc: Self is hovering above a noncontainer
+        logic: "?f ?x wobf1(f,x) & noncontainer(x) & dir_above(self,x)"        
+
+
+
+
+    # Corners and lines
+    # --------------------------------------------------------------------------
+
+    bfaw-self-inside-corner-on-floor:
+        name: bfaw-self-inside-corner-on-floor
+        desc: Self is inside a corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_corner(x) & inside(self,x)"
+
+    bfaw-self-inside-left-corner-on-floor:
+        name: bfaw-self-inside-left-corner-on-floor
+        desc: Self is inside a left corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_left_corner(x) & inside(self,x)"
+
+    bfaw-self-inside-right-corner-on-floor:
+        name: bfaw-self-inside-left-corner-on-floor
+        desc: Self is inside a left corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_right_corner(x) & inside(self,x)"
+
+
+
+    bfaw-self-in-corner-on-floor:
+        name: bfaw-self-in-corner-on-floor
+        desc: Self is in a corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_corner(x) & inside_supported(self,x)"
+
+    bfaw-self-in-left-corner-on-floor:
+        name: bfaw-self-in-left-corner-on-floor
+        desc: Self is in a left corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_left_corner(x) & inside_supported(self,x)"
+
+    bfaw-self-in-right-corner-on-floor:
+        name: bfaw-self-in-left-corner-on-floor
+        desc: Self is in a left corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_right_corner(x) & inside_supported(self,x)"
+
+
+    bfaw-self-touches-corner-on-floor:
+        name: bfaw-self-touches-corner-on-floor
+        desc: Self touches a corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_corner(x) & touches(self,x) & on_top(self,f)"
+
+    bfaw-self-left-touches-left-corner-on-floor:
+        name: bfaw-self-left-touches-left-corner-on-floor
+        desc: Self is left-adjacent to a left corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_left_corner(x) & left_of(self,x) & touches(self,x) & on_top(self,f)"
+
+    bfaw-self-right-touches-right-corner-on-floor:
+        name: bfaw-self-right-touches-right-corner-on-floor
+        desc: Self is right-adjacent to a right corner on the floor
+        logic: "?f ?x wobf1(f,x) & lower_right_corner(x) & right_of(self,x) & touches(self,x) & on_top(self,f)"
+
+
+    bfaw-self-on-hline-on-floor:
+        name: bfaw-self-on-hline-on-floor
+        desc: Self is on an hline, which is on the floor
+        logic: "?f ?x wobf1(f,x) & hline(x) & on_top(self,x)"
+
+    bfaw-self-directly-above-hline-on-floor:
+        name: bfaw-self-directly-above-hline-on-floor
+        desc: Self is hovering above an hline
+        logic: "?f ?x wobf1(f,x) & hline(x) & dir_above(self,x)"  
+
+    bfaw-self-directly-above-hline:
+        name: bfaw-self-directly-above-hline
+        desc: Self is hovering above an hline
+        logic: "?f ?x bfw1(f,x) & hline(x) & dir_above(self,x)"         
+
+    bfaw-self-directly-above-left-corner-on-floor:
+        name: bfaw-self-directly-above-left-corner-on-floor
+        desc: Self is hovering above a left corner
+        logic: "?f ?x wobf1(f,x) & lower_left_corner(x) & dir_above(self,x)" 
+
+    bfaw-self-directly-above-right-corner-on-floor:
+        name: bfaw-self-directly-above-right-corner-on-floor
+        desc: Self is hovering above a right corner
+        logic: "?f ?x wobf1(f,x) & lower_right_corner(x) & dir_above(self,x)"         
+
+
+
+    # Enclosures and nonenclosures
+    # --------------------------------------------------------------------------
+
+    bfaw-self-inside-enclosure-on-floor:
+        name: bfaw-self-inside-enclosure-on-floor
+        desc: Self is inside an enclosure 
+        logic: "?f ?x wobf1(f,x) & enclosure(x) & inside(self,x)"        
+
+    bfaw-self-inside-nonenclosure-on-floor:
+        name: bfaw-self-inside-nonenclosure-on-floor
+        desc: Self is inside a nonenclosure 
+        logic: "?f ?x wobf1(f,x) & nonenclosure(x) & inside(self,x)"
+
+    bfaw-self-outside-touches-enclosure-on-floor:
+        name: bfaw-self-outside-touches-enclosure-on-floor
+        desc: Self is outside and toucning an enclosure
+        logic: "?f ?x wobf1(f,x) & enclosure(x) & ~inside(self,x) & touches(self,x) & on_top(self,f)"
+
+    bfaw-self-outside-touches-nonenclosure-on-floor:
+        name: bfaw-self-outside-touches-nonenclosure-on-floor
+        desc: Self is outside and toucning a nonenclosure
+        logic: "?f ?x wobf1(f,x) & nonenclosure(x) & ~inside(self,x) & touches(self,x) & on_top(self,f)"
+
+    bfaw-self-outside-enclosure-on-floor:
+        name: bfaw-self-outside-enclosure-on-floor
+        desc: Self is outside an enclosure
+        logic: "?f ?x wobf1(f,x) & enclosure(x) & ~inside(self,x) & on_top(self,f)"
+
+    bfaw-self-outside-nonenclosure-on-floor:
+        name: bfaw-self-outside-nonenclosure-on-floor
+        desc: Self is outside a nonenclosure
+        logic: "?f ?x wobf1(f,x) & nonenclosure(x) & ~inside(self,x) & on_top(self,f)"
+
+
+    # Partial enclosures (oriented containers)     
+    # --------------------------------------------------------------------------
+
+    bfaw-self-inside-left-container-on-floor:
+        name: bfaw-self-inside-left-container-on-floor
+        desc: Self inside a left-container
+        logic: "?f ?x wobf1(f,x) & self-inside-left-container(x)"        
+
+    bfaw-self-inside-right-container-on-floor:
+        name: bfaw-self-inside-right-container-on-floor
+        desc: Self inside a right-container
+        logic: "?f ?x wobf1(f,x) & self-inside-right-container(x)"
+
+    bfaw-self-inside-top-container-on-floor:
+        name: bfaw-self-inside-top-container-on-floor
+        desc: Self inside a top-container
+        logic: "?f ?x wobf1(f,x) & self-inside-top-container(x)"        
+
+    bfaw-self-inside-left-noncontainer-on-floor:
+        name: bfaw-self-inside-left-noncontainer-on-floor
+        desc: Self inside a left-noncontainer
+        logic: "?f ?x wobf1(f,x) & self-inside-left-noncontainer(x)"        
+
+    bfaw-self-inside-right-noncontainer-on-floor:
+        name: bfaw-self-inside-right-noncontainer-on-floor
+        desc: Self inside a right-noncontainer
+        logic: "?f ?x wobf1(f,x) & self-inside-right-noncontainer(x)"                
+
+    bfaw-self-inside-top-noncontainer-on-floor:
+        name: bfaw-self-inside-top-noncontainer-on-floor
+        desc: Self inside a top-noncontainer
+        logic: "?f ?x wobf1(f,x) & self-inside-top-noncontainer(x)"        
+
+
+    # Multiple containers and objects
+    # --------------------------------------------------------------------------
+
+    bfaw-self-left-of-container-and-object-on-floor:
+        name: bfaw-self-left-of-container-and-object-on-floor
+        desc: Self is left of a container and an object, non-adjacent
+        logic: >
+            ?f ?x ?y bfaw-self-and-container-on-floor(f,x) & dir_left_of(self,x)
+             & object(y) & white(y) & on_top(y,f) & dir_left_of(self,y) & ~touches(x,y)
+
+    bfaw-self-right-of-container-and-object-on-floor:
+        name: bfaw-self-right-of-container-and-object-on-floor
+        desc: Self is right of a container and an object, non-adjacent
+        logic: >
+            ?f ?x ?y bfaw-self-and-container-on-floor(f,x) & dir_right_of(self,x)
+             & object(y) & white(y) & on_top(y,f) & dir_right_of(self,y) & ~touches(x,y)

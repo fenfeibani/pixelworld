@@ -1,0 +1,407 @@
+__include__: 
+    - bfaw-objects.distractors
+    - bfaw.generators   # bfw1, bfw2, bfw3
+
+
+generators:
+
+
+# -------------------------------- Terms ---------------------------------------
+
+    bfaw1:
+        name: bfaw1
+        desc: Blue floor and one white object (small blob)
+        logic: "?f ?x bfw1(f,x) & small_blob(x) "
+
+    bfaw2:
+        name: bfaw2
+        desc: Blue floor and two white objects (small blobs)
+        logic: "?f ?x ?y bfw2(f,x,y) & small_blob(x) & small_blob(y)"
+
+    bfaw3:
+        name: bfaw3
+        desc: Blue floor and three white objects (small blobs)
+        logic: "?f ?x ?y ?z bfw3(f,x,y,z) & small_blob(x) & small_blob(y) & small_blob(z)"
+
+
+
+
+# -------------------------------- One object ----------------------------------
+
+    bfaw-self-on-floor:
+        name: bfaw-self-on-floor
+        desc: Self is on the floor
+        logic: "?f blue-floor(f) & on_top(self,f)"
+
+    bfaw-object-on-floor:
+        name: bfaw-object-on-floor
+        desc: White object on blue floor
+        logic: ?f ?x bfaw1(f,x) & on_top(x,f)
+
+    bfaw-object-and-self-on-floor:
+        name: bfaw-object-and-self-on-floor
+        desc: Self and white object on blue floor
+        logic: ?f ?x bfaw-object-on-floor(f,x) & on_top(self,f)
+
+    bfaw-non-adjacent-object-and-self-on-floor:
+        name: bfaw-non-adjacent-object-and-self-on-floor
+        desc: A white object and a self are non-adjacent and above a blue floor
+        logic: >
+            ?f ?x bfaw-object-and-self-on-floor(f,x) & ~touches(self,x)            
+
+    bfaw-adjacent-object-and-self-on-floor:
+        name: bfaw-adjacent-object-and-self-on-floor
+        desc: A white object and a self are adjacent and on a blue floor
+        logic: >
+            ?f ?x bfaw-object-and-self-on-floor(f,x) & touches(self,x)
+
+    bfaw-object-and-self-on-floor-with-distractor-floating:
+        name: dbfaw-object-and-self-on-floor-with-distractor-floating
+        desc: Self and white object and self on blue floor, with distractor floating
+        logic: ?f ?d ?x bfaw-object-and-self-on-floor(f,x) & distractor1(d,f,x)
+
+    bfaw-object-and-self-on-floor-with-distractor-floating-near:
+        name: dbfaw-object-and-self-on-floor-with-distractor-floating-near
+        desc: Self and white object and self on blue floor, with distractor floating near
+        logic: ?f ?d ?x bfaw-object-and-self-on-floor(f,x) & distractor-near-float(d,f,x)
+
+    bfaw-self-on-floor-and-floating-object:
+        name: bfaw-self-on-floor-and-floating-object
+        desc: Self on floor with floating object
+        logic: ?f ?x bfaw1(f,x) & on_top(self,f) & above(x,f) & ~touches(x,f)
+
+    bfaw-self-on-floor-and-floating-object-adjacent:
+        name: bfaw-self-on-floor-and-floating-object-adjacent
+        desc: Self on floor with floating object
+        logic: ?f ?x bfaw1(f,x) & on_top(self,f) & above(x,f) & ~touches(x,f) & touches(self,x)
+
+    
+
+# -- objects in certain directions and w/ distractors --
+
+    #-- right-of --
+
+    bfaw-object-right-of-self-on-floor:
+        name: bfaw-object-right-of-self-on-floor
+        desc: Self left of white object on blue floor
+        logic: ?f ?x bfaw-object-on-floor(f,x) & on_top(self,f) & dir_right_of(x,self)
+
+    bfaw-object-right-of-self-on-floor-with-distractor-touches-left:
+        name: bfaw-object-right-of-self-on-floor-with-distractor-touches-left
+        desc: Self and white object on its right on blue floor, with distractor left-touching self
+        logic: ?f ?g ?x bfaw-object-right-of-self-on-floor(f,x) & distractor-touches-left(g,f,self)
+
+    bfaw-object-right-of-self-on-floor-with-distractor-left:
+        name: bfaw-object-right-of-self-on-floor-with-distractor-left
+        desc: Self and white object on its right on blue floor, with distractor left of self
+        logic: ?f ?g ?x bfaw-object-right-of-self-on-floor(f,x) & distractor-left(g,f,self)
+
+    bfaw-object-right-of-self-on-floor-with-distractors-touches-left-floating:
+        name: bfaw-object-right-of-self-on-floor-with-distractors-touches-left-floating
+        desc: Self and white object on its right on blue floor, with distractor left-touching self and floating
+        logic: ?f ?g ?h ?x bfaw-object-right-of-self-on-floor(f,x) & distractors-touches-left-floating(g,h,f,self)
+
+    bfaw-object-right-of-self-on-floor-with-distractors-touches-left-floating-between:
+        name: bfaw-object-right-of-self-on-floor-with-distractors-touches-left-floating-between
+        desc: Self and white object on its right on blue floor, with distractors ...
+        logic: ?f ?g ?h ?x bfaw-object-right-of-self-on-floor(f,x) & distractors-touches-left-floating-between(g,h,f,x)
+
+    bfaw-object-right-of-self-on-floor-with-distractor-in-between:
+        name: bfaw-object-right-of-self-on-floor-with-distractor-in-between
+        desc: Self and white object on its right on blue floor, with distractor in between self and object
+        logic: ?f ?g ?x bfaw-object-right-of-self-on-floor(f,x) & distractor-right-between(g,f,x) & ~touches(g,x)
+
+    bfaw-object-right-of-self-on-floor-with-distractors-in-between-left:
+        name: bfaw-object-right-of-self-on-floor-with-distractors-in-between-left
+        desc: Self and white object on its right on blue floor, with distractor in between self and object and left of self
+        logic: >
+            ?f ?g ?h ?x bfaw-object-right-of-self-on-floor(f,x)
+             & distractor-right-between(g,f,x) & ~touches(g,x) & ~touches(g,h)
+             & distractor-left(h,f,self)
+
+    bfaw-object-right-of-self-on-floor-with-distractors-in-between-left-floating:
+        name: bfaw-object-right-of-self-on-floor-with-distractors-in-between-left-floating
+        desc: Self and white object on its right on blue floor, with distractor in between self and object and left of self and floating
+        logic: >
+            ?f ?x ?h ?i ?g bfaw-object-right-of-self-on-floor(f,g)
+             & distractor-right-between(x,f,g) & ~touches(g,x) & ~touches(x,h)
+             & distractor-left(h,f,self) & distractor-near-float(i,f,g)
+
+
+
+    #-- left-of --
+
+    bfaw-object-left-of-self-on-floor:
+        name: bfaw-object-left-of-self-on-floor
+        desc: Self right of white object on blue floor
+        logic: ?f ?x bfaw-object-on-floor(f,x) & on_top(self,f) & dir_left_of(x,self)
+
+    bfaw-object-left-of-self-on-floor-with-distractor-touches-right:
+        name: bfaw-object-left-of-self-on-floor-with-distractor-touches-right
+        desc: Self and white object on its left on blue floor, with distractor right-touching self
+        logic: ?f ?g ?x bfaw-object-left-of-self-on-floor(f,x) & distractor-touches-right(g,f,self)
+
+    bfaw-object-left-of-self-on-floor-with-distractor-right:
+        name: bfaw-object-left-of-self-on-floor-with-distractor-right
+        desc: Self and white object on its left on blue floor, with distractor right of self
+        logic: ?f ?g ?x bfaw-object-left-of-self-on-floor(f,x) & distractor-right(g,f,self)
+
+    bfaw-object-left-of-self-on-floor-with-distractors-touches-right-floating:
+        name: bfaw-object-left-of-self-on-floor-with-distractors-touches-right-floating
+        desc: Self and white object on its left on blue floor, with distractor right-touching self and floating
+        logic: ?f ?g ?h ?x bfaw-object-left-of-self-on-floor(f,x) & distractors-touches-right-floating(g,h,f,self)
+
+    bfaw-object-left-of-self-on-floor-with-distractors-touches-right-floating-between:
+        name: bfaw-object-left-of-self-on-floor-with-distractors-touches-right-floating-between
+        desc: Self and white object on its left on blue floor, with distractors ...
+        logic: ?f ?g ?h ?x bfaw-object-left-of-self-on-floor(f,x) & distractors-touches-right-floating-between(g,h,f,x)
+
+
+    bfaw-object-left-of-self-on-floor-with-distractor-in-between:
+        name: bfaw-object-left-of-self-on-floor-with-distractor-in-between
+        desc: Self and white object on its left on blue floor, with distractor in between self and object
+        logic: ?f ?g ?x bfaw-object-left-of-self-on-floor(f,x) & distractor-left-between(g,f,x) & ~touches(g,x)
+
+    bfaw-object-left-of-self-on-floor-with-distractors-in-between-right:
+        name: bfaw-object-left-of-self-on-floor-with-distractors-in-between-right
+        desc: Self and white object on its left on blue floor, with distractor in between self and object and right of self
+        logic: >
+            ?f ?g ?h ?x bfaw-object-left-of-self-on-floor(f,x)
+             & distractor-left-between(g,f,x) & ~touches(g,x) & ~touches(g,h)
+             & distractor-right(h,f,self)
+
+    bfaw-object-left-of-self-on-floor-with-distractors-in-between-right-floating:
+        name: bfaw-object-left-of-self-on-floor-with-distractors-in-between-right-floating
+        desc: Self and white object on its left on blue floor, with distractor in between self and object and right of self and floating
+        logic: >
+            ?f ?x ?h ?i ?g bfaw-object-left-of-self-on-floor(f,g)
+             & distractor-left-between(x,f,g) & ~touches(g,x) & ~touches(x,h)
+             & distractor-right(h,f,self) & distractor-near-float(i,f,g)
+
+
+    #-- adjacent --
+
+    bfaw-adjacent-object-and-self-on-floor:
+        name: bfaw-adjacent-object-and-self-on-floor
+        desc: A white object and a self are adjacent and above a blue floor
+        logic: >
+            ?f ?x bfaw-object-and-self-on-floor(f,x) & touches(self,x) 
+
+    bfaw-adjacent-object-and-self-on-floor-with-distractor:
+        name: bfaw-adjacent-object-and-self-on-floor-with-distractor
+        desc: A white object and a self are adjacent and above a blue floor
+        logic: >
+            ?f ?d ?x bfaw-adjacent-object-and-self-on-floor(f,x) & distractor1(d,f, x)
+
+
+    #-- right-adjacent --
+
+    bfaw-right-adjacent-object-and-self-on-floor:
+        name: bfaw-right-adjacent-object-and-self-on-floor
+        desc: A white object and a self are adjacent and above a blue floor
+        logic: >
+            ?f ?x bfaw-object-and-self-on-floor(f,x) & on_right(x,self)
+
+    bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-float:
+        name: bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-float
+        desc: A white object and a self are right-adjacent and above a blue floor, there is a distractor floating and near
+        logic: >
+            ?f ?x ?g bfaw-object-and-self-on-floor(f,g) & on_right(g,self) & distractor-near-float(x,f,g)
+
+    bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-left:
+        name: bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-left
+        desc: A white object and a self are right-adjacent and above a blue floor, there is a distractor to the near left
+        logic: >
+            ?f ?g ?x bfaw-object-and-self-on-floor(f,x) & on_right(x,self) & distractor-near-left(g,f,x)
+
+    bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-right:
+        name: bfaw-right-adjacent-object-and-self-on-floor-with-distractor-near-right
+        desc: A white object and a self are right-adjacent and above a blue floor, there is a distractor to the near right
+        logic: >
+            ?f ?g ?x bfaw-object-and-self-on-floor(f,x) & on_right(x,self) & distractor-near-right(g,f,x)
+
+    bfaw-right-adjacent-object-and-self-on-floor-with-distractors-near:
+        name: bfaw-right-adjacent-object-and-self-on-floor-with-distractors-near
+        desc: A white object and a self are right-adjacent and above a blue floor, there are near distractors left and right
+        logic: >
+            ?f ?x ?y ?g bfaw-object-and-self-on-floor(f,g) & on_right(g,self) & distractors-near(x,y,f,g)
+
+
+    #-- left-adjacent --
+
+    bfaw-left-adjacent-object-and-self-on-floor:
+        name: bfaw-left-adjacent-object-and-self-on-floor
+        desc: A white object and a self are adjacent and above a blue floor
+        logic: >
+            ?f ?x bfaw-object-and-self-on-floor(f,x) & on_left(x,self)          
+
+    bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-float:
+        name: bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-float
+        desc: A white object and a self are left-adjacent and above a blue floor, there is a distractor floating and near
+        logic: >
+            ?f ?x ?g bfaw-object-and-self-on-floor(f,g) & on_left(g,self) & distractor-near-float(x,f,g)
+
+    bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-left:
+        name: bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-left
+        desc: A white object and a self are left-adjacent and above a blue floor, there is a distractor to the near left
+        logic: >
+            ?f ?g ?x bfaw-object-and-self-on-floor(f,x) & on_left(x,self) & distractor-near-left(g,f,x)
+
+    bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-right:
+        name: bfaw-left-adjacent-object-and-self-on-floor-with-distractor-near-right
+        desc: A white object and a self are left-adjacent and above a blue floor, there is a distractor to the near right
+        logic: >
+            ?f ?g ?x bfaw-object-and-self-on-floor(f,x) & on_left(x,self) & distractor-near-right(g,f,x)
+
+    bfaw-left-adjacent-object-and-self-on-floor-with-distractors-near:
+        name: bfaw-left-adjacent-object-and-self-on-floor-with-distractors-near
+        desc: A white object and a self are left-adjacent and above a blue floor, there are near distractors left and right
+        logic: >
+            ?f ?x ?y ?g bfaw-object-and-self-on-floor(f,g) & on_left(g,self) & distractors-near(x,y,f,g)
+
+
+    #-- ontop --
+
+    bfaw-self-ontop-object-on-floor:
+        name: bfaw-self-ontop-object-on-floor
+        desc: "Self is on top of an object that is on the floor"
+        logic: >
+            ?f ?x bfaw-object-on-floor(f,x) & on_top(self,x)
+
+    bfaw-self-ontop-object-on-floor-with-distractor-near-float:
+        name: bfaw-self-ontop-object-on-floor-with-distractor-near-float
+        desc: Self is on top of an object that is on the floor with distractor ...
+        logic: >
+            ?f ?g ?x bfaw-object-on-floor(f,g) & on_top(self,g) & distractor-near-float(x,f,g)
+
+    bfaw-self-ontop-object-on-floor-with-distractor-near-left:
+        name: bfaw-self-ontop-object-on-floor-with-distractor-near-left
+        desc: Self is on top of an object that is on the floor with distractor ...
+        logic: >
+            ?f ?g ?x bfaw-object-on-floor(f,g) & on_top(self,g) & distractor-near-left(x,f,g)
+
+    bfaw-self-ontop-object-on-floor-with-distractor-near-right:
+        name: bfaw-self-ontop-object-on-floor-with-distractor-near-right
+        desc: Self is on top of an object that is on the floor with distractor ...
+        logic: >
+            ?f ?g ?x bfaw-object-on-floor(f,g) & on_top(self,g) & distractor-near-right(x,f,g)
+
+    bfaw-self-ontop-object-on-floor-with-distractors-near:
+        name: bfaw-self-ontop-object-on-floor-with-distractors-near
+        desc: Self is on top of an object that is on the floor with distractor ...
+        logic: >
+            ?f ?x ?y ?g bfaw-object-on-floor(f,g) & on_top(self,g) & distractors-near(x,y,f,g)
+
+
+
+# -------------------------------- Two objects ---------------------------------
+
+    bfaw-two-objects-on-floor:
+        name: bfaw-two-objects-on-floor
+        desc: Two white objects on blue floor
+        logic: "?f ?x ?y bfaw2(f,x,y) & on_top(x,f) & on_top(y,f)"
+
+    bfaw-two-objects-and-self-on-floor:
+        name: bfaw-objects-and-self-on-floor
+        desc: Self and two white objects on blue floor
+        logic: "?f ?x ?y bfaw-two-objects-on-floor(f,x,y) & on_top(self,f)"
+
+    bfaw-two-objects-and-self-on-floor-with-distractor:
+        name: bfaw-objects-and-self-on-floor-with-distractor
+        desc: Self and two white objects on blue floor, with floating distractor
+        logic: "?f ?k ?x ?y bfaw-two-objects-and-self-on-floor(f,x,y) & on_top(self,f) & distractor2(k,f,x,y)"
+
+    bfaw-two-non-adjacent-objects-and-self-on-floor:
+        name: bfaw-two-non-adjacent-objects-and-self-on-floor
+        desc: "There are two non-adjacent white objects and a self somewhere on a blue floor"
+        logic: >
+            ?f ?x ?y bfaw-two-objects-and-self-on-floor(f,x,y) & ~touches(x,y)
+
+    bfaw-self-between-two-objects-on-floor:
+        name: bfaw-self-between-two-objects-on-floor
+        desc: "Self is between two white objects on the floor"
+        logic: >
+            ?f ?x ?y bfaw-two-objects-and-self-on-floor(f,x,y) & dir_left_of(x,self) & dir_right_of(y,self)
+
+    bfaw-two-non-adjacent-objects-left-of-self-on-floor:
+        name: bfaw-two-non-adjacent-objects-left-of-self-on-floor
+        desc: "There are two non-adjacent white objects left of a self somewhere on a blue floor"
+        logic: >
+            ?f ?x ?y bfaw-two-non-adjacent-objects-and-self-on-floor(f,x,y) & dir_left_of(x,self) & dir_left_of(y,self)                     
+
+    bfaw-two-non-adjacent-objects-left-of-adjacent-self-on-floor:
+        name: bfaw-two-non-adjacent-objects-left-of-adjacent-self-on-floor
+        desc: "There are two non-adjacent white objects left of a self somewhere on a blue floor, and self is adjacent to the rightmost"
+        logic: >
+            ?f ?x ?y bfaw-two-non-adjacent-objects-and-self-on-floor(f,x,y) & dir_left_of(x,y) & on_left(y,self) 
+
+    bfaw-two-non-adjacent-objects-right-of-self-on-floor:
+        name: bfaw-two-non-adjacent-objects-right-of-self-on-floor
+        desc: "There are two non-adjacent white objects right of a self somewhere on a blue floor"
+        logic: >
+            ?f ?x ?y bfaw-two-non-adjacent-objects-and-self-on-floor(f,x,y) & dir_right_of(x,self) & dir_right_of(y,self) 
+
+    bfaw-two-non-adjacent-objects-right-of-adjacent-self-on-floor:
+        name: bfaw-two-non-adjacent-objects-right-of-adjacent-self-on-floor
+        desc: "There are two non-adjacent white objects right of a self somewhere on a blue floor, and self is adjacent to the leftmost"
+        logic: >
+            ?f ?x ?y bfaw-two-non-adjacent-objects-and-self-on-floor(f,x,y) & dir_right_of(x,y) & on_right(y,self) 
+
+    bfaw-two-non-adjacent-objects-one-left-one-right-of-self-on-floor:
+        name: bfaw-two-non-adjacent-objects-one-left-one-right-of-self-on-floor
+        desc: "There are two non-adjacent white objects, one left, one right of a self somewhere on a blue floor"
+        logic: >
+            ?f ?x ?y bfaw-two-non-adjacent-objects-and-self-on-floor(f,x,y) 
+                     & dir_left_of(x,self) & dir_right_of(y,self) & ~touches(x,self) & ~touches(y,self)
+
+
+    bfaw-self-and-two-objects-one-on-floor:
+        name: bfaw-self-and-two-objects-one-on-floor
+        desc: Self and two objects, one of which is on the floor
+        logic: "?f ?x ?y bfaw2(f,x,y) & on_top(x,f) & above(y,f) & ~touches(y,f) & ~touches(x,y) & on_top(self,f)"
+                     
+
+    bfaw-self-and-two-objects-above-floor:
+        name: bfaw-self-and-two-objects-above-floor
+        desc: Self on the floor and two objects above the floor
+        logic: "?f ?x ?y bfaw2(f,x,y) & on_top(self,f) & above(x,f) & above(y,f) & ~touches(x,f) & ~touches(y,f) & ~touches(x,y)"
+
+
+# ------------------------------ Three objects ---------------------------------
+
+
+
+
+    bfaw-three-objects-on-floor:
+        name: bfaw-three-objects-on-floor
+        desc: Three white objects on blue floor
+        logic: ?f ?x ?y ?z bfaw3(f,x,y,z) & on_top(x,f) & on_top(y,f) & on_top(z,f)
+
+    bfaw-three-objects-and-self-on-floor:
+        name: bfaw-three-objects-and-self-on-floor
+        desc: Self and three white objects on blue floor
+        logic: ?f ?x ?y ?z bfaw-three-objects-on-floor(f,x,y,z) & on_top(self,f)
+
+    bfaw-three-objects-and-self-on-floor-with-distractor:
+        name: bfaw-three-objects-and-self-on-floor-with-distractor
+        desc: Self and three white objects on blue floor, with floating distractor
+        logic: ?f ?k ?x ?y ?z bfaw-three-objects-and-self-on-floor(f,x,y,z) & on_top(self,f) & distractor3(k,f,x,y,z)
+
+    bfaw-three-non-adjacent-objects-and-self-on-floor:
+        name: bfaw-two-objects-and-self-on-floor
+        desc: "There are two white objects and a self somewhere on a blue floor"
+        logic: >
+            ?f ?x ?y ?z bfaw-three-objects-and-self-on-floor(f,x,y,z) & ~touches(x,y) & ~touches(x,z) & ~touches(y,z)           
+
+    bfaw-three-non-adjacent-objects-left-of-self-on-floor:
+        name: bfaw-three-non-adjacent-objects-left-of-self-on-floor
+        desc: "There exist three non-adjacent white objects left of a self somewhere on a blue floor"
+        logic: >
+            ?f ?x ?y ?z bfaw-three-non-adjacent-objects-and-self-on-floor(f,x,y,z) & dir_left_of(x,self) & dir_left_of(y,self) & dir_left_of(z,self)            
+
+
+    bfaw-three-non-adjacent-objects-right-of-self-on-floor:
+        name: bfaw-three-non-adjacent-objects-right-of-self-on-floor
+        desc: "There are three non-adjacent white objects right of a self somewhere on a blue floor"
+        logic: >
+            ?f ?x ?y ?z bfaw-three-non-adjacent-objects-and-self-on-floor(f,x,y,z) & dir_right_of(x,self) & dir_right_of(y,self) & dir_right_of(z,self)

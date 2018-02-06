@@ -1,0 +1,181 @@
+__include__:
+    - bfaw-containment-ba.datasets
+
+
+# A dictionary of experiment name to a triple of
+#   - dataset name
+#   - a list of experiment names that precede it
+
+curriculum:
+
+
+    # Simple
+    # --------------------------------------------------------------------------
+
+    ba_self-on-something_from_directly-above:
+        - ba_self-on-something_from_directly-above
+        - []
+
+
+
+    # Containers
+    # --------------------------------------------------------------------------
+
+    ba_self-in-container_from_adjacent-on-floor:
+        - ba_self-in-container_from_adjacent-on-floor
+        - []
+
+    ba_self-in-container_from_on-floor:
+        - ba_self-in-container_from_on-floor
+        - []
+
+    ba_self-in-container_from_directly-above:
+        - ba_self-in-container_from_directly-above
+        - []    
+
+    ba_self-in-container_from_left-touches-on-floor:
+        - ba_self-in-container_from_left-touches-on-floor
+        - []    
+
+    ba_self-in-container_from_right-touches-on-floor:
+        - ba_self-in-container_from_right-touches-on-floor
+        - []
+
+
+
+    ba_self-inside-container_from_adjacent-on-floor:
+        - ba_self-inside-container_from_adjacent-on-floor
+        - []
+
+    ba_self-inside-container_from_on-floor:
+        - ba_self-inside-container_from_on-floor
+        - []
+
+    ba_self-inside-container_from_directly-above:
+        - ba_self-inside-container_from_directly-above
+        - []
+
+    ba_self-inside-container_from_left-touches-on-floor:
+        - ba_self-inside-container_from_left-touches-on-floor
+        - []    
+
+    ba_self-inside-container_from_right-touches-on-floor:
+        - ba_self-inside-container_from_right-touches-on-floor
+        - []
+
+
+
+
+    ba_self-in-potential-container_from_adjacent-on-floor:
+        - ba_self-in-potential-container_from_adjacent-on-floor
+        - []
+
+    ba_self-in-potential-container_from_on-floor:
+        - ba_self-in-potential-container_from_on-floor
+        - []
+
+    ba_self-in-potential-container_from_directly-above:
+        - ba_self-in-potential-container_from_directly-above
+        - []    
+
+    ba_self-in-potential-container_from_left-touches-on-floor:
+        - ba_self-in-potential-container_from_left-touches-on-floor
+        - []    
+
+    ba_self-in-potential-container_from_right-touches-on-floor:
+        - ba_self-in-potential-container_from_right-touches-on-floor
+        - []
+
+
+
+
+    ba_self-inside-potential-container_from_adjacent-on-floor:
+        - ba_self-inside-potential-container_from_adjacent-on-floor
+        - []
+
+    ba_self-inside-potential-container_from_on-floor:
+        - ba_self-inside-potential-container_from_on-floor
+        - []
+
+    ba_self-inside-potential-container_from_directly-above:
+        - ba_self-inside-potential-container_from_directly-above
+        - []
+
+    ba_self-inside-potential-container_from_left-touches-on-floor:
+        - ba_self-inside-potential-container_from_left-touches-on-floor
+        - []    
+
+    ba_self-inside-potential-container_from_right-touches-on-floor:
+        - ba_self-inside-potential-container_from_right-touches-on-floor
+        - []
+
+
+
+
+    
+
+    ba_self-outside-container_from_inside:
+        - ba_self-outside-container_from_inside
+        - []
+
+    ba_self-outside-container_from_in:
+        - ba_self-outside-container_from_in
+        - []
+
+    ba_self-left-touches-container-on-floor_from_in:
+        - ba_self-left-touches-container-on-floor_from_in
+        - []
+
+    ba_self-left-touches-container-on-floor_from_inside:
+        - ba_self-left-touches-container-on-floor_from_inside
+        - []
+
+    ba_self-right-touches-container-on-floor_from_in:
+        - ba_self-right-touches-container-on-floor_from_in
+        - []               
+
+    ba_self-right-touches-container-on-floor_from_inside:
+        - ba_self-right-touches-container-on-floor_from_inside
+        - []
+
+
+
+    ba_self-in-container_from_between-potential-containers:
+        - ba_self-in-container_from_between-potential-containers
+        - []
+
+    ba_self-in-container_from_between-container-and-noncontainer:
+        - ba_self-in-container_from_between-container-and-noncontainer
+        - []
+
+    ba_self-in-container_from_self-and-container-and-noncontainer-on-floor:
+        - ba_self-in-container_from_self-and-container-and-noncontainer-on-floor
+        - []
+
+    ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor:          
+        - ba_self-in-container_from_self-and-container-and-two-noncontainers-on-floor   
+        - []
+
+    ba_self-in-container_from_between-container-and-corner:
+        - ba_self-in-container_from_between-container-and-corner
+        - []
+
+    ba_self-in-container_from_self-and-container-and-corner-on-floor:
+        - ba_self-in-container_from_self-and-container-and-corner-on-floor
+        - []      
+
+    ba_self-in-container_from_self-and-container-and-two-corners-on-floor:
+        - ba_self-in-container_from_self-and-container-and-two-corners-on-floor
+        - []      
+
+
+
+    # Corners and lines
+    # --------------------------------------------------------------------------
+
+    ba_self-on-hline_from_directly-above:
+        - ba_self-on-hline_from_directly-above
+        - []
+
+
+

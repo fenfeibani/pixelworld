@@ -1,0 +1,3 @@
+
+overrideable_variant_vals:
+    vals_filter: [['one_best','max_training_reward',{'k':1}],['two_best','max_training_reward',{'k':2}]]   

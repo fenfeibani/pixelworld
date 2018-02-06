@@ -1,0 +1,111 @@
+# A metaexperiment file is a yaml file specifying experiments to run.
+#
+# Experiments are described by a dictionary specifying various parameters of the
+# experiment, such as what environment to train in and what RL algorithm to use.
+# Experiments can inherit parameters from others by using an __inherits__ key.
+# Only experiments with __execute__ set to True will be run.
+#
+# See pixelworld/run_policy.defaults for further details on metaexperiment
+# files and default values for certain experiment keys. See files within 
+# experiments/aaai8 for more elaborate usage.
+
+mode: meta
+
+# Shared experiment specification
+common:
+    baseline: 
+        init: +rllab.baselines.linear_feature_baseline:LinearFeatureBaseline
+
+    policy: 
+        kwargs:
+            hidden_sizes: [32]
+
+    algo: 
+        init: +rllab.algos.npo:NPO
+        kwargs:
+            batch_size: 2000
+            whole_paths: True
+            n_itr: 100
+
+    train_video: none
+    test_video: fixed-10
+    gym_logging: True
+
+    force_delete_all: True
+
+    env:
+        init: +pixelworld.envs.modular_env:ModularEnv
+        kwargs:
+            module_specs:
+              - class: +pixelworld.envs.modules:ClassificationSignalModule
+              - class: +pixelworld.envs.modules:DatasetModule
+              - class: +pixelworld.envs.modules:MinimalPixelWorldModule
+                kwargs:
+                    remove_noop: True
+              - class: +pixelworld.envs.modules:HandObservationModule
+
+
+    # Dataset, equivalent to cl_self-in-container_vs_noncontainer as defined
+    # in experiments/aaai18/DATA/bfaw-containment-cl.datasets and files 
+    # referenced therein (also the custom dataset used in pixelworld/demo.py)
+
+    macros:
+        # There is a blue floor
+        blue-floor: "?f floor(f) & blue(f)" 
+
+        # Blue floor one white object
+        bfw1: "?f ?x blue-floor(f) & white(x)"
+        
+        # One white object on a blue floor 
+        wobf1: "?f ?x bfw1(f,x) & on_top(x,f)"
+        
+        # There is a container on the floor
+        bfaw-container-on-floor: "?f ?x wobf1(f,x) & container(x)"
+        
+        # There is a noncontainer on the floor
+        bfaw-noncontainer-on-floor: "?f ?x wobf1(f,x) & noncontainer(x)"
+
+    dataset:
+        init: +pixelworld.concept_csp:generate_dataset
+        kwargs:
+            # Whether self is contained and at bottom of container (self-in-container)
+            concept: "?x container(x) & inside_supported(self,x)"
+            generators:
+                # Self is in a container (bfaw-self-in-container-on-floor)
+                - "?f ?x bfaw-container-on-floor(f,x) & inside_supported(self,x)"
+                # Self is in a noncontainer (bfaw-self-in-noncontainer-on-floor)
+                - "?f ?x bfaw-noncontainer-on-floor(f,x) & inside_supported(self,x)"
+            concept_macros: +@macros
+            generator_macros: +@macros
+            num_samples: 50
+            seed: 0
+            use_cache: True
+            settings:
+                frame: True
+                height: 18
+                width: 35
+                fixed_floor: True
+                floor_height: 3
+                padding: 2
+
+
+    # List all keys here that are not found in pixelworld/run_policy.defaults.
+    # This is used to catch some mistyped keys
+    user_defined: [macros]
+
+
+
+mlp_policy:
+    __inherits__: [common]
+    __execute__: True
+
+    policy: 
+        init: +rllab.policies.categorical_mlp_policy:CategoricalMLPPolicy
+
+
+gru_policy:
+    __inherits__: [common]
+    __execute__: True
+
+    policy: 
+        init: +rllab.policies.categorical_gru_policy:CategoricalGRUPolicy

@@ -1,0 +1,59 @@
+__include__:
+    - objects2-canonical-curr.include
+    - bfaw-objects-ba.datasets
+
+
+# 0.80    1   0.62     out/aaai18/objects1-sig/ba_self-ontop-object_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.48    3   0.32     out/aaai18/objects1-sig/ba_self-between-two-objects_from_not-between-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.42    2   0.39     out/aaai18/objects1-sig/ba_self-left-touches-object_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.90    2   0.66     out/aaai18/objects1-sig/ba_self-right-touches-object_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.41    4   0.33     out/aaai18/objects1-sig/ba_self-ontop-object_from_anwhere-on-floor_with_distraction/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.21    2   0.10     out/aaai18/objects1-sig/ba_self-second_from_left_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 0.20    3   0.09     out/aaai18/objects1-sig/ba_self-second_from_right_from_anywhere-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    2   0.37     out/aaai18/objects1-sig/ba_self-left-of-two-objects_from_not-left-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+# 1.00    1   0.78     out/aaai18/objects1-sig/ba_self-right-of-two-objects_from_not-right-on-floor/big+sig+hand+curr+two_best+gru32_init+npo
+
+__gen_experiments:
+    __depends__: [__gen_data,__gen_curriculum]
+
+__gen_tests:
+    __depends__: [__gen_curriculum]    
+
+
+__gen_curriculum:
+    call: +pixelworld.exp_tools:generate_pattern
+    kwargs:
+        bindings:
+            canonical_object_curriculum: +@canonical_object_curriculum
+
+        name: curriculum
+
+        cfg:
+
+            ba_self-ontop-object_from_anywhere-on-floor:
+                - ba_self-ontop-object_from_anywhere-on-floor
+                - +@canonical_object_curriculum
+
+            ba_self-between-two-objects_from_not-between-on-floor:
+                - ba_self-between-two-objects_from_not-between-on-floor
+                - +@canonical_object_curriculum
+
+            ba_self-second_from_left_from_anywhere-on-floor:
+                - ba_self-second_from_left_from_anywhere-on-floor
+                - +@canonical_object_curriculum 
+
+            ba_self-second_from_right_from_anywhere-on-floor:
+                - ba_self-second_from_right_from_anywhere-on-floor
+                - +@canonical_object_curriculum
+
+            ba_self-left-of-two-objects_from_not-left-on-floor:
+                - ba_self-left-of-two-objects_from_not-left-on-floor
+                - +@canonical_object_curriculum
+
+            ba_self-right-of-two-objects_from_not-right-on-floor:
+                - ba_self-right-of-two-objects_from_not-right-on-floor
+                - +@canonical_object_curriculum
+
+
+
+
