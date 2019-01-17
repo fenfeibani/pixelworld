@@ -37,7 +37,7 @@ pytest==3.0.7
 python-constraint==1.2
 python-dateutil==2.6.0
 pytz==2016.7
-PyYAML==3.12
+pyyaml>=4.2b4,<4.3
 PyOpenGL==3.1.1a1
 requests==2.12.1
 -e git://github.com/rll/rllab.git@8ac26cbff2c3888a4b1526dc0dadbc67f0a78039#egg=rllab
